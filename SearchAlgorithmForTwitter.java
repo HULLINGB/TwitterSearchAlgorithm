@@ -40,7 +40,7 @@ public class Search{
 			array2[b] = database.rawQuery("SELECT Username FROM Twitter WHERE AccountNum = " + b);
 		}
 		int charsInARow = 0;
-		
+		int[] array3 = new array3[length];
 		for(int i = 0; i < length; i++)
 		{
 			char[] array2Token = array2[i].toCharArray();
@@ -52,6 +52,7 @@ public class Search{
 				}
 				if(array1[z] != array2Token[z])
 				{
+					array3[a] = charsInARow;
 					charsInARow = 0;
 				}
 			}
@@ -63,7 +64,6 @@ public class Search{
 		{
 			map.put(array3[w], w);
 		}
-		
 		for(int x = 0; x < array3.length; x++)
         {
             for(int y = 0; y < array3.length; y++)
@@ -71,16 +71,15 @@ public class Search{
 				//descending sort
                 if(map[x] > map[y])
                 {
-                    space = map[x];
-                    map[x] = map[y];
-                    map[y] = space;
+                    space = array3[x];
+                    array3[x] = array3[y];
+                    array3[y] = space;
                 }
             }
         }
-		
 		for(int p = 0; p < 100; p++;)
 		{
-			topResult[p] = database.rawQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + map.get(p);
+			topResult[p] = database.rawQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + map.get(array3[p]);
 		}
 		
 	}
