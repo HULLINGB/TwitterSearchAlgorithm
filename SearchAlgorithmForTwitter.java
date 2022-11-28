@@ -25,7 +25,7 @@ public class Search{
 
 	public void search(String input)
 	{
-		//This will be our 
+		//This will be our input entered converted to a char array
 		char[] array1 = input.toCharArray();
 		long a = 0;
 		//this will be the number of existing accounts.
@@ -35,7 +35,7 @@ public class Search{
 		//long datatype goes up to 9,223,372,036,854,775,807
 		long length = SQLCOUNT();
 		SQLDatabase database = new SQLDatabase();
-		//ArrayList will go up to 2,147,483,647 positions, so we will use array list, and it can be sorted easily.
+		//ArrayList will go up to 2,147,483,647 positions so we will use array list, and it can be sorted easily.
 		ArrayList<String> array = new ArrayList<String>(length);
 			
 		for(long b = 0; b < length; b++)
