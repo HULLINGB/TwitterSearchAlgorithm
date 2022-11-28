@@ -38,7 +38,7 @@ public class Search{
 		//ArrayList will go up to 2,147,483,647 positions, so we will use array list, and it can be sorted easily.
 		ArrayList<String> array = new ArrayList<String>(length);
 			
-		for(int b = 0; b < length; b++)
+		for(long b = 0; b < length; b++)
 		{
 			//here we assume that each entry has a unique account number, starting at 0 or 1, going to infinity.
 			array.add(database.rawQuery("SELECT Username FROM Twitter WHERE AccountNum = " + b));
