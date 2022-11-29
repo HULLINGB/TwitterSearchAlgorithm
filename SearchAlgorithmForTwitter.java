@@ -13,7 +13,6 @@ public class Search{
 		Scanner myObj = new Scanner(System.in);
 		String input = myObj.nextLine();
 		search(input);
-		
 		//show the top results return from our query statement in our application.
 		//result by account number, assuming the unique number of the list of all
 		//accounts starts at account 0, going to 1, 2, 3, 4......
@@ -44,9 +43,11 @@ public class Search{
 			array.add(database.rawQuery("SELECT Username FROM Twitter WHERE AccountNum = " + b));
 		}
 		int charsInARow = 0;
+		String charsString = "";
 		int totalInARow = 0;
 		ArrayList<String> array2 = new ArrayList<String>(length);
-		ArrayList<Integer> = array3 = new ArrayList<Integer>(length);
+		ArrayList<Integer> array3 = new ArrayList<Integer>(length);
+		ArrayList<String> array4 = new ArrayList<String>(length);
 		for(long i = 0; i < length; i++)
 		{
 			char[] array2Token = array2.get(i).toCharArray();
@@ -63,37 +64,29 @@ public class Search{
 					charsInARow = 0;
 				}
 			}
-			a++;
 		}
-		Map<int, int> map = new HashMap<int, int>();	
+		Map<int, String> map = new HashMap<int, String>();	
 		
 		for(long w = 0; w < array3.size(); w++)
 		{
-			map.put(array3.get(w), w);
+			map.put(w, array3.get(w));
 		}
 		int space = 0;
-		for(long x = 0; x < array3.size(); x++)
-        {
-            for(long y = 0; y < array3.size(); y++)
-            {
-				//descending sort
-                if(array3.get(x) > array3.get(y))
-                {
-                    space = array3.get(x);
-                    array3.get(x) = array3.get(y);
-                    array3.get(y) = space;
-                }
-            }
-        }
+		//Sort array3 into descending order because its an Integer arraylist.
+		Collections.sort(array3, Collections.reverseOrder());
+		//Then assing array3 to array4 as String values so we can use the value
+		//in our map.get() method to retrieve the integer values from highest number
+		//of characters in a row
+		for(int i = 0; i < array3.size(); i++)
+		{
+			//convert array3 to String and copy to array4
+			array4.add(String.valueOf(array3.get(i)));
+		}
+		//Change p to String to get our String values from array 4 to retrieve the int values in
+		//our hashmap, which will return integers, or our "account number"
 		for(int p = 0; p < 100; p++;)
 		{
-			topResult[p] = database.rawQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + map.get(array3.get(p));
-		}
-		
+			topResult[p] = database.rawQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + map.get(array4.get(p));
+		}	
 	}
-	public String returnResult()
-	{
-		return topResult;
-	}
-	
 }
