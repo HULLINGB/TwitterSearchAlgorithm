@@ -45,7 +45,7 @@ public class Search{
 
 		int charsInARow = 0;
 		String charsString = "";
-		int totalInARow = 0;
+		//int totalInARow = 0;
 		ArrayList<Integer> array3 = new ArrayList<Integer>();
 		ArrayList<String> array4 = new ArrayList<String>();
 		for(long i = 0; i < length; i++)
@@ -57,13 +57,9 @@ public class Search{
 				{
 					charsInARow = charsInARow + 1;
 				}
-				if(array1[z] != array2Token[z])
-				{
-					//totalInARow = totalInARow + charsInARow;
-					array3.add(charsInARow);
-					charsInARow = 0;
-				}
 			}
+			array3.add(charsInARow);
+			charsInARow = 0;
 		}
 		Map<int, String> map = new HashMap<int, String>();	
 		
