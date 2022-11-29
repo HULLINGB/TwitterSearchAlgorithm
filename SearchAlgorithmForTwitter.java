@@ -4,7 +4,8 @@ public class Search{
 	
 	String input = "";
 	//We assume 100 for now because we cannot return 2 billion accounts
-	String[] topResult = new String[100];
+	int num = 100;
+	String[] topResult = new String[num];
 	
 	public static void main(String[] args)
 	{
@@ -36,13 +37,12 @@ public class Search{
 		SQLDatabase database = new SQLDatabase();
 		//ArrayList will go up to 2,147,483,647 positions so we will use array list, and it can be sorted easily.
 		ArrayList<String> array2 = new ArrayList<String>();
-			
 		for(long b = 0; b < length; b++)
 		{
 			//here we assume that each entry has a unique account number, starting at 0 or 1, going to infinity.
 			array2.add(database.rawQuery("SELECT Username FROM Twitter WHERE AccountNum = " + b));
 		}
-		
+
 		int charsInARow = 0;
 		String charsString = "";
 		int totalInARow = 0;
@@ -84,7 +84,7 @@ public class Search{
 		}
 		//Change p to String to get our String values from array 4 to retrieve the int values in
 		//our hashmap, which will return integers, or our "account number"
-		for(int p = 0; p < 100; p++;)
+		for(int p = 0; p < num; p++;)
 		{
 			topResult[p] = database.rawQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + map.get(array4.get(p));
 		}	
