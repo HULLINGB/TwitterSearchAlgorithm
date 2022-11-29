@@ -35,7 +35,7 @@ public class Search{
 		long length = SQLCOUNT();
 		SQLDatabase database = new SQLDatabase();
 		//ArrayList will go up to 2,147,483,647 positions so we will use array list, and it can be sorted easily.
-		ArrayList<String> array2 = new ArrayList<String>(length);
+		ArrayList<String> array2 = new ArrayList<String>();
 			
 		for(long b = 0; b < length; b++)
 		{
@@ -46,8 +46,8 @@ public class Search{
 		int charsInARow = 0;
 		String charsString = "";
 		int totalInARow = 0;
-		ArrayList<Integer> array3 = new ArrayList<Integer>(length);
-		ArrayList<String> array4 = new ArrayList<String>(length);
+		ArrayList<Integer> array3 = new ArrayList<Integer>();
+		ArrayList<String> array4 = new ArrayList<String>();
 		for(long i = 0; i < length; i++)
 		{
 			char[] array2Token = array2.get(i).toCharArray();
@@ -67,7 +67,7 @@ public class Search{
 		}
 		Map<int, String> map = new HashMap<int, String>();	
 		
-		for(long w = 0; w < array3.size(); w++)
+		for(long w = 0; w < length; w++)
 		{
 			map.put(w, array3.get(w));
 		}
@@ -77,7 +77,7 @@ public class Search{
 		//Then assing array3 to array4 as String values so we can use the value
 		//in our map.get() method to retrieve the integer values from highest number
 		//of characters in a row
-		for(int i = 0; i < array3.size(); i++)
+		for(int i = 0; i < length; i++)
 		{
 			//convert array3 to String and copy to array4
 			array4.add(String.valueOf(array3.get(i)));
