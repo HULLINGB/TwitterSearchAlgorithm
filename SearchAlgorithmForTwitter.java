@@ -77,7 +77,7 @@ public class Search{
 		//Then assing array3 to array4 as String values so we can use the value
 		//in our map.get() method to retrieve the integer values from highest number
 		//of characters in a row
-		for(int i = 0; i < length; i++)
+		for(long i = 0; i < length; i++)
 		{
 			//convert array3 to String and copy to array4
 			array4.add(String.valueOf(array3.get(i)));
