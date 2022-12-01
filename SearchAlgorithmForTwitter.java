@@ -61,16 +61,9 @@ public class Search{
 			array3.add(charsInARow);
 			charsInARow = 0;
 		}
-		Map<int, String> map = new HashMap<int, String>();	
-		
-		for(long w = 0; w < length; w++)
-		{
-			map.put(w, String.valueOf(array3.get(w)));
-		}
-		int space = 0;
 		//Sort array3 into descending order because its an Integer arraylist.
 		Collections.sort(array3, Collections.reverseOrder());
-		//Then assing array3 to array4 as String values so we can use the value
+		//Then passing array3 to array4 as String values so we can use the value
 		//in our map.get() method to retrieve the integer values from highest number
 		//of characters in a row
 		for(long i = 0; i < length; i++)
@@ -78,11 +71,17 @@ public class Search{
 			//convert array3 to String and copy to array4
 			array4.add(String.valueOf(array3.get(i)));
 		}
+		//Create our hashmap with an integer and a String
+		Map<int, String> map = new HashMap<int, String>();	
+		for(long w = 0; w < length; w++)
+		{
+			map.put(w, array4.get(w)));
+		}
 		//Change p to String to get our String values from array 4 to retrieve the int values in
 		//our hashmap, which will return integers, or our "account number"
 		for(int p = 0; p < num; p++;)
 		{
 			topResult[p] = database.rawQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(map.get(array4.get(p)));
-		}	
+		}
 	}
 }
