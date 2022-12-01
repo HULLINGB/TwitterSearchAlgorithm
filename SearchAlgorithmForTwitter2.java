@@ -76,11 +76,11 @@ public class Search{
 		//Collection as value will help us access different positions with duplicate keys
 		//because our matching algorithm on lines 53 - 61 can return duplicate values.
 		//(https://www.baeldung.com/java-map-duplicate-keys)
-		Map<List<String>, int> map = new HashMap<>();
-		//Map<String, int> map = new HashMap<>();
+		Map<List<int>, String> map = new HashMap<>();
+		Map<int, String> map2 = new HashMap<>();
 		long a = 1;
 		int numOfDuplicatesWanted = 9;
-		int nextDuplicateSet = 0;
+		//int nextDuplicateSet = 0;
 		int b = 0;
 		int c = 0;
 		for(long w = 0; w < length; w++)
@@ -90,19 +90,23 @@ public class Search{
 			//otherwise we will have to just 
 			if(array3[w] == array3[a])
 			{
-				List<String> list = new ArrayList<>();
-				map.put(, list);
+				List<int> list = new ArrayList<>();
+				map.put(list, array3[b]);
 				for(int k = 0; k < numOfDuplicatesWanted; k++)
 				{
-					map.get(String.valueOf(array3.get(b)).add(b);
+					map.get(String.valueOf(array3.get(k)).add(b);
 					b++;
 				}
 			}else
 			{
 				c = c + b;
-				map.put(String.valueOf(array3.get(c)), c);
+				map2.put(String.valueOf(array3.get(c)), w);
 			}
+			a++;
 		}
+		a = 0;
+		b = 0;
+		c = 0;
 		//Change p to String to get our String values from array 4 to retrieve the int values in
 		//our hashmap, which will return integers, or our "account number"
 		int sqlString = "";
@@ -111,9 +115,19 @@ public class Search{
 			//Using assertThat() will allow us to access each
 			//next position of the map int value (account number)
 			//that we are trying with the same String key
-			sqlString = assertThat(map.get(array3.get(p)).get(p).isEqualTo());
-			topResult[p] = database.rawQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(sqlString));
-			//topResult[p] = database.rawQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(map.get(String.valueof(array3.get(p))));
+			if(array3[p] == array3[a])
+			{
+				for(int y = 0; y < numOfDuplicatesWanted; y++)
+				{
+					sqlString = assertThat(map.get(array3.get(b)).get(y).isEqualTo(b));
+					topResult[p] = database.rawQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(sqlString));
+					b++;
+				}
+			}else{
+				c = c + b;
+				topResult[p] = database.rawQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(map2.get(String.valueof(array3.get(c))));
+
+			}
 		}
 	}
 }
