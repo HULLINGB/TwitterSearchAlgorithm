@@ -81,7 +81,7 @@ public class Search{
 		//our hashmap, which will return integers, or our "account number"
 		for(int p = 0; p < num; p++;)
 		{
-			topResult[p] = database.rawQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(map.get(array4.get(p)));
+			topResult[p] = database.rawQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(map.get(array4.get(p))));
 		}
 	}
 }
