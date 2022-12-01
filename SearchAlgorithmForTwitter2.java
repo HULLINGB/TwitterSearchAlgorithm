@@ -83,13 +83,12 @@ public class Search{
 		//int nextDuplicateSet = 0;
 		long b = 0;
 		long c = 0;
-		Boolean trueOrFalse = false;
-		for(long w = 0; w < length; w++)
+		for( ; ; )
 		{
 			//here we just call a String.valueOf() to skip assigning int array3 to an String array3
 			//multiple positions with the same key get assigned this way?
 			//otherwise we will have to just 
-			if(array3[w] == array3[a] && trueOrFalse = true)
+			if(array3[a] == array3[b])
 			{
 				List<int> list = new ArrayList<>();
 				map.put(list, array3[b]);
@@ -98,18 +97,16 @@ public class Search{
 					map.get(String.valueOf(array3.get(k)).add(b);
 					b++;
 				}
-				trueOrFalse = false;
 				a++;
 			}else
 			{
 				c = c + b;
 				map2.put(String.valueOf(array3.get(c)), c);
-				beenThroughLoop = false;
 				a++;
 			}
-			if(array3[w] == array3[a])
+			if(a = length)
 			{
-				trueOrFalse = true;
+				break;
 			}
 		}
 		a = 0;
@@ -118,12 +115,12 @@ public class Search{
 		//Change p to String to get our String values from array 4 to retrieve the int values in
 		//our hashmap, which will return integers, or our "account number"
 		int sqlString = "";
-		for(int p = 0; p < num; p++;)
+		for( ; ; )
 		{	
 			//Using assertThat() will allow us to access each
 			//next position of the map int value (account number)
 			//that we are trying with the same String key
-			if(array3[p] == array3[a])
+			if(array3[a] == array3[b])
 			{
 				for(int y = 0; y < numOfDuplicatesWanted; y++)
 				{
@@ -136,7 +133,10 @@ public class Search{
 				c = c + b;
 				a++;
 				topResult[p] = database.rawQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(map2.get(String.valueof(array3.get(c))));
-
+			}
+			if(a = length)
+			{
+				break;
 			}
 		}
 	}
