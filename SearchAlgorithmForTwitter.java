@@ -1,5 +1,14 @@
 import java.util.*;
 
+
+//This version will skip important account matches because map.get() returns the 
+//the last value match found. If we have two accounts that have the same number of 
+//matching characters, the map.get() will go the last entry input into the Hashmap.
+//This will essentially output the same account multiple outputs of the same account,
+//While skipping the others with the same number of matching characters. We would have
+//to test this to see if this is a problem when we are performing a search. If we
+//are lucky, this will yeild good search results. If not, then we will skip too many
+//accounts yeild good search results.
 public class Search{
 	
 	String input = "";
@@ -14,6 +23,8 @@ public class Search{
 		Scanner myObj = new Scanner(System.in);
 		String input = myObj.nextLine();
 		search(input);
+		int lastPosition = -1;
+		int thisPosition = 0;
 		//show the top results return from our query statement in our application.
 		//result by account number, assuming the unique number of the list of all
 		//accounts starts at account 0, going to 1, 2, 3, 4......
@@ -47,7 +58,7 @@ public class Search{
 		String charsString = "";
 		//int totalInARow = 0;
 		ArrayList<Integer> array3 = new ArrayList<Integer>();
-		ArrayList<String> array4 = new ArrayList<String>();
+		//ArrayList<String> array4 = new ArrayList<String>();
 		for(long i = 0; i < length; i++)
 		{
 			char[] array2Token = array2.get(i).toCharArray();
@@ -63,25 +74,19 @@ public class Search{
 		}
 		//Sort array3 into descending order because its an Integer arraylist.
 		Collections.sort(array3, Collections.reverseOrder());
-		//Then passing array3 to array4 as String values so we can use the value
-		//in our map.get() method to retrieve the integer values from highest number
-		//of characters in a row
-		for(long i = 0; i < length; i++)
-		{
-			//convert array3 to String and copy to array4
-			array4.add(String.valueOf(array3.get(i)));
-		}
 		//Create our hashmap with an integer and a String
 		Map<int, String> map = new HashMap<int, String>();	
 		for(long w = 0; w < length; w++)
 		{
-			map.put(w, array4.get(w));
+			map.put(w, String.valueOf(array3.get(w)));
 		}
-		//Change p to String to get our String values from array 4 to retrieve the int values in
-		//our hashmap, which will return integers, or our "account number"
+
 		for(int p = 0; p < num; p++;)
 		{
-			topResult[p] = database.rawQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(map.get(array4.get(p))));
+			//This allows for duplicates to be copied to topResult[], which will
+			//essentially will skip accounts that have the same numbers of matching
+			//characters, which will leave out important matches, so this will not work correctly.
+			topResult[p] = database.rawQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(map.get(String.valueOf(array3.get(p)))));
 		}
 	}
 }
