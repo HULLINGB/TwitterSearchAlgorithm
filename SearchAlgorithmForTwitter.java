@@ -65,7 +65,7 @@ public class Search{
 		
 		for(long w = 0; w < length; w++)
 		{
-			map.put(w, array3.get(w));
+			map.put(w, String.valueOf(array3.get(w)));
 		}
 		int space = 0;
 		//Sort array3 into descending order because its an Integer arraylist.
@@ -82,7 +82,7 @@ public class Search{
 		//our hashmap, which will return integers, or our "account number"
 		for(int p = 0; p < num; p++;)
 		{
-			topResult[p] = database.rawQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + map.get(array4.get(p));
+			topResult[p] = database.rawQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(map.get(array4.get(p)));
 		}	
 	}
 }
