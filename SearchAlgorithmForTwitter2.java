@@ -54,7 +54,7 @@ public class Search{
 		String charsString = "";
 		//int totalInARow = 0;
 		ArrayList<Integer> array3 = new ArrayList<Integer>();
-		ArrayList<String> array4 = new ArrayList<String>();
+		//ArrayList<String> array4 = new ArrayList<String>();
 		for(long i = 0; i < length; i++)
 		{
 			char[] array2Token = array2.get(i).toCharArray();
