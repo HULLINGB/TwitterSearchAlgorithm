@@ -54,7 +54,7 @@ public class Search{
 		String charsString = "";
 		//int totalInARow = 0;
 		ArrayList<Integer> array3 = new ArrayList<Integer>();
-		ArrayList<String> array4 = new ArrayList<String>();
+		//ArrayList<String> array4 = new ArrayList<String>();
 		for(long i = 0; i < length; i++)
 		{
 			char[] array2Token = array2.get(i).toCharArray();
@@ -88,7 +88,7 @@ public class Search{
 			//here we just call a String.valueOf() to skip assigning int array3 to an String array3
 			//multiple positions with the same key get assigned this way?
 			//otherwise we will have to just 
-			if(array3[w] == array[a])
+			if(array3[w] == array3[a])
 			{
 				List<String> list = new ArrayList<>();
 				map.put(, list);
