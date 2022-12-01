@@ -81,14 +81,15 @@ public class Search{
 		long a = 1;
 		int numOfDuplicatesWanted = 9;
 		//int nextDuplicateSet = 0;
-		int b = 0;
-		int c = 0;
+		long b = 0;
+		long c = 0;
+		Boolean trueOrFalse = false;
 		for(long w = 0; w < length; w++)
 		{
 			//here we just call a String.valueOf() to skip assigning int array3 to an String array3
 			//multiple positions with the same key get assigned this way?
 			//otherwise we will have to just 
-			if(array3[w] == array3[a])
+			if(array3[w] == array3[a] && trueOrFalse = true)
 			{
 				List<int> list = new ArrayList<>();
 				map.put(list, array3[b]);
@@ -97,12 +98,19 @@ public class Search{
 					map.get(String.valueOf(array3.get(k)).add(b);
 					b++;
 				}
+				trueOrFalse = false;
+				a++;
 			}else
 			{
 				c = c + b;
-				map2.put(String.valueOf(array3.get(c)), w);
+				map2.put(String.valueOf(array3.get(c)), c);
+				beenThroughLoop = false;
+				a++;
 			}
-			a++;
+			if(array3[w] == array3[a])
+			{
+				trueOrFalse = true;
+			}
 		}
 		a = 0;
 		b = 0;
@@ -122,9 +130,11 @@ public class Search{
 					sqlString = assertThat(map.get(array3.get(b)).get(y).isEqualTo(b));
 					topResult[p] = database.rawQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(sqlString));
 					b++;
+					a++;
 				}
 			}else{
 				c = c + b;
+				a++;
 				topResult[p] = database.rawQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(map2.get(String.valueof(array3.get(c))));
 
 			}
