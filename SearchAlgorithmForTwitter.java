@@ -75,7 +75,7 @@ public class Search{
 		Map<int, String> map = new HashMap<int, String>();	
 		for(long w = 0; w < length; w++)
 		{
-			map.put(w, array4.get(w)));
+			map.put(w, array4.get(w));
 		}
 		//Change p to String to get our String values from array 4 to retrieve the int values in
 		//our hashmap, which will return integers, or our "account number"
