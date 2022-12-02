@@ -35,7 +35,6 @@ public class Search{
 	{
 		//This will be our input entered converted to a char array
 		char[] array1 = input.toCharArray();
-		long a = 0;
 		//this will be the number of existing accounts.
 		//The SQL COUNT() function returns the number of rows in a table satisfying the criteria specified 
 		//in the WHERE clause. It sets the number of rows or non NULL column values. 
@@ -51,8 +50,6 @@ public class Search{
 			array2.add(database.rawQuery("SELECT Username FROM Twitter WHERE AccountNum = " + b));
 		}
 		int charsInARow = 0;
-		String charsString = "";
-		//int totalInARow = 0;
 		ArrayList<Integer> array3 = new ArrayList<Integer>();
 		for(long i = 0; i < length; i++)
 		{
@@ -79,7 +76,6 @@ public class Search{
 		Map<int, String> map2 = new HashMap<>();
 		int numOfDuplicatesWanted = 9;
 		long a = 1;
-		long c = 0;
 		for(long b = 0; b < length; b++)
 		{
 			//here we just call a String.valueOf() to skip assigning int array3 to an String array3
@@ -92,13 +88,15 @@ public class Search{
 				for(int k = 0; k < numOfDuplicatesWanted; k++)
 				{
 					map.get(String.valueOf(array3.get(k)).add(b);
-					b++;
+					if(y = numOfDuplicatesWanted - 1)
+					{
+						b++;
+					}
 					a++;
 				}
 			}else
 			{
 				map2.put(String.valueOf(array3.get(b)), b);
-				b++;
 				a++;
 			}
 			if(b = length)
@@ -121,12 +119,14 @@ public class Search{
 				{
 					sqlString = assertThat(map.get(array3.get(b)).get(y).isEqualTo(b));
 					topResult[b] = database.rawQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(sqlString));
-					b++;
+					if(y = numOfDuplicatesWanted - 1)
+					{
+						b++;
+					}
 					a++;
 				}
 			}else{
 				topResult[b] = database.rawQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(map2.get(String.valueof(array3.get(b))));
-				b++;
 				a++;
 			}
 			if(b = num)
