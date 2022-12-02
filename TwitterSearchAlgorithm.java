@@ -3,7 +3,6 @@ import java.sql.*;
 
 public class Search{
 	
-	String input = "";
 	//We assume 100 for now because we cannot return 2 billion accounts
 	int num = 150;
 	String[] topResult = new String[num];
