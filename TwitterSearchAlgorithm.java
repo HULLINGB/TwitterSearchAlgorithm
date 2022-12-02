@@ -82,10 +82,10 @@ public class Search{
 			{
 				List<int> list = new ArrayList<>();
 				map.put(list, array3[b]);
-				for(int k = 0; k < numOfDuplicatesWanted; k++)
+				for(int i = 0; i < numOfDuplicatesWanted; i++)
 				{
-					map.get(String.valueOf(array3.get(k)).add(b);
-					if(y = numOfDuplicatesWanted - 1)
+					map.get(String.valueOf(array3.get(i)).add(b);
+					if(i < numOfDuplicatesWanted - 1)
 					{
 						b++;
 					}
@@ -115,7 +115,7 @@ public class Search{
 				{
 					sqlString = assertThat(map.get(array3.get(b)).get(y).isEqualTo(b));
 					topResult[b] = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(sqlString));
-					if(y = numOfDuplicatesWanted - 1)
+					if(y < numOfDuplicatesWanted - 1)
 					{
 						b++;
 					}
