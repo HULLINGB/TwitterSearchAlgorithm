@@ -3,8 +3,8 @@ import java.util.*;
 //map not yeild good results because it references the last entered value into the hashmap
 //so it will just print out the same account multiple times when their is a map.get()
 //that references the same value multiple times which may happen when two positions
-//in the array3 ArrayList have the same value essentially. This algorithm attempts
-//to create a Collection inside our HashMap that will distinguish between the 
+//in the array3 ArrayList have the same value. SearchAlgorithmForTwitter2.java attempts
+//to create a Collection inside a HashMap that will distinguish between the 
 //different positions when using the map.get() to reference an account number
 public class Search{
 	
