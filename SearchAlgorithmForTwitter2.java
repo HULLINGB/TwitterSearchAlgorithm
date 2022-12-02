@@ -92,8 +92,7 @@ public class Search{
 					}
 					a++;
 				}
-			}else
-			{
+			}else{
 				map2.put(String.valueOf(array3.get(b)), b);
 				a++;
 			}
