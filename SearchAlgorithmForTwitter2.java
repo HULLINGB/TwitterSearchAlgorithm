@@ -1,12 +1,6 @@
 import java.util.*;
 import java.sql.*;
-//SearchAlgorithmForTwitter.java skips important search results because map.get()
-//map not yeild good results because it references the last entered value into the hashmap
-//so it will just print out the same account multiple times when their is a map.get()
-//that references the same value multiple times which may happen when two positions
-//in the array3 ArrayList have the same value. SearchAlgorithmForTwitter2.java attempts
-//to create a Collection inside a HashMap that will distinguish between the 
-//different positions when using the map.get() to reference an account number
+
 public class Search{
 	
 	String input = "";
@@ -35,15 +29,16 @@ public class Search{
 		//This will be our input entered converted to a char array
 		char[] array1 = input.toCharArray();
 		//Access MySQL database at a URL
+		Class.forName("com.mysql.jdbc.Driver");  
 		Connection connection = DriverManager.getConnection(  
-			"jdbc:mysql://localhost:3306/sonoo","root","root");  
+				"jdbc:mysql://localhost:3306/sonoo","root","root");    
 		//This will be the number of existing accounts.
 		//The SQL COUNT() function returns the number of rows in a table satisfying the criteria specified 
 		//in the WHERE clause. It sets the number of rows or non NULL column values. 
 		//COUNT() returns 0 if there were no matching rows.
 		//long datatype goes up to 9,223,372,036,854,775,807
 		long length = SQLCOUNT();
-		Statement database = con.createStatement();
+		Statement database = connection.createStatement();
 		//ArrayList will go up to 2,147,483,647 positions so we will use array list, and it can be sorted easily.
 		ArrayList<String> array2 = new ArrayList<String>();
 		for(long b = 0; b < length; b++)
