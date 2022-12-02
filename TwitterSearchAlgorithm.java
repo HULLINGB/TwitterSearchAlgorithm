@@ -31,7 +31,7 @@ public class Search{
 		//Access MySQL database at a URL
 		Class.forName("com.mysql.jdbc.Driver");  
 		Connection connection = DriverManager.getConnection(  
-				"jdbc:mysql://localhost:3306/sonoo","root","root");    
+				"jdbc:mysql://localhost:3306/Twitter","root","root");    
 		//This will be the number of existing accounts.
 		//The SQL COUNT() function returns the number of rows in a table satisfying the criteria specified 
 		//in the WHERE clause. It sets the number of rows or non NULL column values. 
