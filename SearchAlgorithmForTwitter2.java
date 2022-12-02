@@ -12,7 +12,7 @@ public class Search{
 	
 	String input = "";
 	//We assume 100 for now because we cannot return 2 billion accounts
-	int num = 100;
+	int num = 150;
 	String[] topResult = new String[num];
 	
 	public static void main(String[] args)
@@ -78,9 +78,8 @@ public class Search{
 		//(https://www.baeldung.com/java-map-duplicate-keys)
 		Map<List<int>, String> map = new HashMap<>();
 		Map<int, String> map2 = new HashMap<>();
-		long a = 1;
 		int numOfDuplicatesWanted = 9;
-		//int nextDuplicateSet = 0;
+		long a = 1;
 		long b = 0;
 		long c = 0;
 		for( ; ; )
@@ -131,7 +130,7 @@ public class Search{
 				b++;
 			}
 			a++;
-			if(b = length)
+			if(b = num)
 			{
 				break;
 			}
