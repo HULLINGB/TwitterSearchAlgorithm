@@ -97,19 +97,17 @@ public class Search{
 					map.get(String.valueOf(array3.get(k)).add(b);
 					b++;
 				}
-				a++;
 			}else
 			{
-				c = c + b;
-				map2.put(String.valueOf(array3.get(c)), c);
-				a++;
+				map2.put(String.valueOf(array3.get(b)), b);
+				b++;
 			}
-			if(a = length)
+			if(b = length)
 			{
 				break;
 			}
 		}
-		a = 0;
+		a = 1;
 		b = 0;
 		c = 0;
 		//Change p to String to get our String values from array 4 to retrieve the int values in
@@ -125,16 +123,15 @@ public class Search{
 				for(int y = 0; y < numOfDuplicatesWanted; y++)
 				{
 					sqlString = assertThat(map.get(array3.get(b)).get(y).isEqualTo(b));
-					topResult[p] = database.rawQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(sqlString));
+					topResult[b] = database.rawQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(sqlString));
 					b++;
-					a++;
 				}
 			}else{
-				c = c + b;
-				a++;
-				topResult[p] = database.rawQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(map2.get(String.valueof(array3.get(c))));
+				topResult[b] = database.rawQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(map2.get(String.valueof(array3.get(b))));
+				b++;
 			}
-			if(a = length)
+			a++;
+			if(b = length)
 			{
 				break;
 			}
