@@ -1,4 +1,5 @@
 import java.util.*;
+import java.sql.*;
 //SearchAlgorithmForTwitter.java skips important search results because map.get()
 //map not yeild good results because it references the last entered value into the hashmap
 //so it will just print out the same account multiple times when their is a map.get()
@@ -33,19 +34,22 @@ public class Search{
 	{
 		//This will be our input entered converted to a char array
 		char[] array1 = input.toCharArray();
-		//this will be the number of existing accounts.
+		//Access MySQL database at a URL
+		Connection connection = DriverManager.getConnection(  
+			"jdbc:mysql://localhost:3306/sonoo","root","root");  
+		//This will be the number of existing accounts.
 		//The SQL COUNT() function returns the number of rows in a table satisfying the criteria specified 
 		//in the WHERE clause. It sets the number of rows or non NULL column values. 
 		//COUNT() returns 0 if there were no matching rows.
 		//long datatype goes up to 9,223,372,036,854,775,807
 		long length = SQLCOUNT();
-		SQLDatabase database = new SQLDatabase();
+		Statement database = con.createStatement();
 		//ArrayList will go up to 2,147,483,647 positions so we will use array list, and it can be sorted easily.
 		ArrayList<String> array2 = new ArrayList<String>();
 		for(long b = 0; b < length; b++)
 		{
 			//here we assume that each entry has a unique account number, starting at 0 or 1, going to infinity.
-			array2.add(database.rawQuery("SELECT Username FROM Twitter WHERE AccountNum = " + b));
+			array2.add(database.executeQuery("SELECT Username FROM Twitter WHERE AccountNum = " + b));
 		}
 		int charsInARow = 0;
 		ArrayList<Integer> array3 = new ArrayList<Integer>();
@@ -115,7 +119,7 @@ public class Search{
 				for(int y = 0; y < numOfDuplicatesWanted; y++)
 				{
 					sqlString = assertThat(map.get(array3.get(b)).get(y).isEqualTo(b));
-					topResult[b] = database.rawQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(sqlString));
+					topResult[b] = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(sqlString));
 					if(y = numOfDuplicatesWanted - 1)
 					{
 						b++;
@@ -123,7 +127,7 @@ public class Search{
 					a++;
 				}
 			}else{
-				topResult[b] = database.rawQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(map2.get(String.valueof(array3.get(b))));
+				topResult[b] = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(map2.get(String.valueof(array3.get(b))));
 				a++;
 			}
 			if(b = num)
