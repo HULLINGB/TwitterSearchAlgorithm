@@ -94,10 +94,6 @@ public class Search{
 				map2.put(String.valueOf(array3.get(b)), b);
 				a++;
 			}
-			if(b = length)
-			{
-				break;
-			}
 		}
 		a = 1;
 		//Change p to String to get our String values from array 4 to retrieve the int values in
@@ -123,10 +119,6 @@ public class Search{
 			}else{
 				topResult[b] = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(map2.get(String.valueof(array3.get(b))));
 				a++;
-			}
-			if(b = num)
-			{
-				break;
 			}
 		}
 	}
