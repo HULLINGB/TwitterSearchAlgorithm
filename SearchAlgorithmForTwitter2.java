@@ -54,7 +54,6 @@ public class Search{
 		String charsString = "";
 		//int totalInARow = 0;
 		ArrayList<Integer> array3 = new ArrayList<Integer>();
-		//ArrayList<String> array4 = new ArrayList<String>();
 		for(long i = 0; i < length; i++)
 		{
 			char[] array2Token = array2.get(i).toCharArray();
@@ -80,9 +79,8 @@ public class Search{
 		Map<int, String> map2 = new HashMap<>();
 		int numOfDuplicatesWanted = 9;
 		long a = 1;
-		long b = 0;
 		long c = 0;
-		for( ; ; )
+		for(long b = 0; b < length; b++)
 		{
 			//here we just call a String.valueOf() to skip assigning int array3 to an String array3
 			//multiple positions with the same key get assigned this way?
@@ -95,11 +93,13 @@ public class Search{
 				{
 					map.get(String.valueOf(array3.get(k)).add(b);
 					b++;
+					a++;
 				}
 			}else
 			{
 				map2.put(String.valueOf(array3.get(b)), b);
 				b++;
+				a++;
 			}
 			if(b = length)
 			{
@@ -107,12 +107,10 @@ public class Search{
 			}
 		}
 		a = 1;
-		b = 0;
-		c = 0;
 		//Change p to String to get our String values from array 4 to retrieve the int values in
 		//our hashmap, which will return integers, or our "account number"
 		int sqlString = "";
-		for( ; ; )
+		for(int b = 0; b < num; b++)
 		{	
 			//Using assertThat() will allow us to access each
 			//next position of the map int value (account number)
