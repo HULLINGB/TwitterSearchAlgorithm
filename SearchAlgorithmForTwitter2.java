@@ -122,12 +122,13 @@ public class Search{
 					sqlString = assertThat(map.get(array3.get(b)).get(y).isEqualTo(b));
 					topResult[b] = database.rawQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(sqlString));
 					b++;
+					a++;
 				}
 			}else{
 				topResult[b] = database.rawQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(map2.get(String.valueof(array3.get(b))));
 				b++;
+				a++;
 			}
-			a++;
 			if(b = num)
 			{
 				break;
