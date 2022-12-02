@@ -1,6 +1,4 @@
 import java.util.*;
-
-
 //SearchAlgorithmForTwitter.java skips important search results because map.get()
 //map not yeild good results because it references the last entered value into the hashmap
 //so it will just print out the same account multiple times when their is a map.get()
