@@ -1,6 +1,7 @@
 import java.util.*;
 import java.sql.*;
 
+
 public class Search{
 	
 	//We assume 100 for now because we cannot return 2 billion accounts
@@ -70,14 +71,28 @@ public class Search{
 		//(https://www.baeldung.com/java-map-duplicate-keys)
 		Map<List<Integer>, String> map = new HashMap<>();
 		Map<int, String> map2 = new HashMap<>();
-		int numOfDuplicatesWanted = 9;
+		int numOfDuplicatesWanted = 0;
 		long a = 1;
 		for(long b = 0; b < length; b++)
 		{
 			//here we just call a String.valueOf() to skip assigning int array3 to an String array3
 			//multiple positions with the same key get assigned this way?
 			//otherwise we will have to just 
-			if(array3[a] == array3[b])
+			a = b;
+			for( ; ; )
+			{
+				if(array3[b] == array3[a])
+				{
+					numOfDuplicatesWanted = numOfDuplicatesWanted + 1;
+					a++;
+				}
+				if(array3[b] != array3[a])
+				{
+					a = b;
+					break;
+				}
+			}
+			if(numOfDuplicatesWanted > 0)
 			{
 				List<Integer> list = new ArrayList<>();
 				map.put(list, array3[b]);
@@ -88,11 +103,11 @@ public class Search{
 					{
 						b++;
 					}
-					a++;
 				}
-			}else{
+			}
+			if(numOfDuplicatesWanted = 0)
+			{
 				map2.put(String.valueOf(array3.get(b)), b);
-				a++;
 			}
 		}
 		a = 1;
@@ -104,7 +119,21 @@ public class Search{
 			//Using assertThat() will allow us to access each
 			//next position of the map int value (account number)
 			//that we are trying with the same String key
-			if(array3[a] == array3[b])
+			a = b;
+			for( ; ; )
+			{
+				if(array3[b] == array3[a])
+				{
+					numOfDuplicatesWanted = numOfDuplicatesWanted + 1;
+					a++;
+				}
+				if(array3[b] != array3[a])
+				{
+					a = b;
+					break;
+				}
+			}
+			if(numOfDuplicatesWanted > 1)
 			{
 				for(int y = 0; y < numOfDuplicatesWanted; y++)
 				{
@@ -114,12 +143,13 @@ public class Search{
 					{
 						b++;
 					}
-					a++;
 				}
-			}else{
+				numOfDuplicatesWanted = 0;
+			}
+			if(numOfDuplicatesWanted = 0)
+			{
 				topResult[b] = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(map2.get(String.valueof(array3.get(b))));
-				a++;
+			}	
 			}
 		}
 	}
-}
