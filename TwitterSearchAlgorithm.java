@@ -78,7 +78,7 @@ public class Search{
 			//here we just call a String.valueOf() to skip assigning int array3 to an String array3
 			//multiple positions with the same key get assigned this way?
 			//otherwise we will have to just 
-			a = b;
+			a = b + 1;
 			for( ; ; )
 			{
 				if(array3[b] == array3[a])
@@ -88,7 +88,6 @@ public class Search{
 				}
 				if(array3[b] != array3[a])
 				{
-					a = b;
 					break;
 				}
 			}
@@ -119,7 +118,7 @@ public class Search{
 			//Using assertThat() will allow us to access each
 			//next position of the map int value (account number)
 			//that we are trying with the same String key
-			a = b;
+			a = b + 1;
 			for( ; ; )
 			{
 				if(array3[b] == array3[a])
@@ -129,7 +128,6 @@ public class Search{
 				}
 				if(array3[b] != array3[a])
 				{
-					a = b;
 					break;
 				}
 			}
