@@ -73,23 +73,19 @@ public class Search{
 		Map<int, String> map2 = new HashMap<>();
 		int numOfDuplicatesWanted = 0;
 		long a = 1;
+		long c = 0;
 		for(long b = 0; b < length; b++)
 		{
 			//here we just call a String.valueOf() to skip assigning int array3 to an String array3
 			//multiple positions with the same key get assigned this way?
 			//otherwise we will have to just 
 			a = b + 1;
-			for( ; ; )
+			c = b;
+			numOfDuplicatesWanted = 0;
+			while(array3[c] == array3[a])
 			{
-				if(array3[b] == array3[a])
-				{
 					numOfDuplicatesWanted = numOfDuplicatesWanted + 1;
 					a++;
-				}
-				if(array3[b] != array3[a])
-				{
-					break;
-				}
 			}
 			if(numOfDuplicatesWanted > 0)
 			{
@@ -119,17 +115,12 @@ public class Search{
 			//next position of the map int value (account number)
 			//that we are trying with the same String key
 			a = b + 1;
-			for( ; ; )
+			c = b;
+			numOfDuplicatesWanted = 0;
+			while(array3[c] == array3[a])
 			{
-				if(array3[b] == array3[a])
-				{
 					numOfDuplicatesWanted = numOfDuplicatesWanted + 1;
 					a++;
-				}
-				if(array3[b] != array3[a])
-				{
-					break;
-				}
 			}
 			if(numOfDuplicatesWanted > 1)
 			{
@@ -142,7 +133,6 @@ public class Search{
 						b++;
 					}
 				}
-				numOfDuplicatesWanted = 0;
 			}
 			if(numOfDuplicatesWanted = 0)
 			{
