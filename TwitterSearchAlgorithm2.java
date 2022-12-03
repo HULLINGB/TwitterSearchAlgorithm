@@ -1,7 +1,6 @@
 import java.util.*;
 import java.sql.*;
 
-
 public class Search{
 	
 	//We assume 100 for now because we cannot return 2 billion accounts
@@ -70,7 +69,6 @@ public class Search{
 		//because our matching algorithm on lines 53 - 61 can return duplicate values.
 		//(https://www.baeldung.com/java-map-duplicate-keys)
 		Map<List<Integer>, String> map = new HashMap<>();
-		Map<int, String> map2 = new HashMap<>();
 		int numOfDuplicatesWanted = 0;
 		long a = 1;
 		long c = 0;
@@ -81,28 +79,21 @@ public class Search{
 			//otherwise we will have to just 
 			a = b + 1;
 			c = b;
-			numOfDuplicatesWanted = 0;
+			numOfDuplicatesWanted = 1;
 			while(array3[c] == array3[a])
 			{
 					numOfDuplicatesWanted = numOfDuplicatesWanted + 1;
 					a++;
 			}
-			if(numOfDuplicatesWanted > 0)
+			List<Integer> list = new ArrayList<>();
+			map.put(list, array3[b]);
+			for(int i = 0; i < numOfDuplicatesWanted; i++)
 			{
-				List<Integer> list = new ArrayList<>();
-				map.put(list, array3[b]);
-				for(int i = 0; i < numOfDuplicatesWanted; i++)
+				map.get(String.valueOf(array3.get(i)).add(b);
+				if(i < numOfDuplicatesWanted - 1)
 				{
-					map.get(String.valueOf(array3.get(i)).add(b);
-					if(i < numOfDuplicatesWanted - 1)
-					{
-						b++;
-					}
+					b++;
 				}
-			}
-			if(numOfDuplicatesWanted = 0)
-			{
-				map2.put(String.valueOf(array3.get(b)), b);
 			}
 		}
 		//Change p to String to get our String values from array 4 to retrieve the int values in
@@ -115,28 +106,21 @@ public class Search{
 			//that we are trying with the same String key
 			a = b + 1;
 			c = b;
-			numOfDuplicatesWanted = 0;
+			numOfDuplicatesWanted = 1;
 			while(array3[c] == array3[a])
 			{
 					numOfDuplicatesWanted = numOfDuplicatesWanted + 1;
 					a++;
 			}
-			if(numOfDuplicatesWanted > 0)
+			for(int y = 0; y < numOfDuplicatesWanted; y++)
 			{
-				for(int y = 0; y < numOfDuplicatesWanted; y++)
+				sqlString = assertThat(map.get(array3.get(b)).get(y).isEqualTo(b));
+				topResult[b] = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(sqlString));
+				if(y < numOfDuplicatesWanted - 1)
 				{
-					sqlString = assertThat(map.get(array3.get(b)).get(y).isEqualTo(b));
-					topResult[b] = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(sqlString));
-					if(y < numOfDuplicatesWanted - 1)
-					{
-						b++;
-					}
+					b++;
 				}
-			}
-			if(numOfDuplicatesWanted = 0)
-			{
-				topResult[b] = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(map2.get(String.valueof(array3.get(b))));
 			}	
-			}
 		}
 	}
+}
