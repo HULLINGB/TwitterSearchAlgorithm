@@ -121,7 +121,7 @@ public class Search{
 					numOfDuplicatesWanted = numOfDuplicatesWanted + 1;
 					a++;
 			}
-			if(numOfDuplicatesWanted > 1)
+			if(numOfDuplicatesWanted > 0)
 			{
 				for(int y = 0; y < numOfDuplicatesWanted; y++)
 				{
