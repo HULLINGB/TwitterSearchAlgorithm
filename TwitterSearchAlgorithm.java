@@ -105,7 +105,6 @@ public class Search{
 				map2.put(String.valueOf(array3.get(b)), b);
 			}
 		}
-		a = 1;
 		//Change p to String to get our String values from array 4 to retrieve the int values in
 		//our hashmap, which will return integers, or our "account number"
 		int sqlString = "";
