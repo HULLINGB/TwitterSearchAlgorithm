@@ -93,7 +93,7 @@ public class Search{
 				a++;
 			}
 			List<Integer> list = new ArrayList<>();
-			map.put(list, array3[b]);
+			map.put(list, String.valueOf(array3[b]));
 			for(int i = 0; i < numOfDuplicatesWanted; i++)
 			{
 				map.get(String.valueOf(array3.get(i)).add(b);
