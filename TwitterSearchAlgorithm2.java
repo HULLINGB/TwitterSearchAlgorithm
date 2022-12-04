@@ -106,7 +106,7 @@ public class Search{
 		}
 		//Change p to String to get our String values from array 4 to retrieve the int values in
 		//our hashmap, which will return integers, or our "account number"
-		int sqlString = "";
+		String sqlString = "";
 		for(int b = 0; b < num; b++)
 		{	
 			//Using assertThat() will allow us to access each
