@@ -20,7 +20,6 @@ public class Search{
 		//accounts starts at account 0, going to 1, 2, 3, 4......
 		for(int i = 0; i < topResult.length; i++)
 		{
-			topResult[i] = result.getString("Username");
  			System.out.println(topResult[i]);
 		}
 	}
@@ -133,6 +132,7 @@ public class Search{
 			{
 				sqlString = assertThat(map.get(array3.get(c)).get(y)).isEqualTo(String.valueOf(b));
 				result = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + sqlString);
+				topResult[i] = result.getString("Username");
 				if(y < numOfDuplicatesWanted - 1)
 				{
 					b++;
