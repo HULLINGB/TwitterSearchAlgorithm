@@ -48,7 +48,11 @@ public class Search{
 		}
 		int charsInARow = 0;
 		ArrayList<Integer> array3 = new ArrayList<Integer>();
-		for(long i = 0; i < length; i++)
+		//To keep track of the order of the array3 that will be sorted in
+		//a nice Collections sort function.
+		ArrayList<Integer> array4 = new ArrayList<Integer>();
+		int size = 0;
+		for(int i = 0; i < length; i++)
 		{
 			char[] array2Token = array2.get(i).toCharArray();
 			for(int z = 0; z < array2Token.length; z++)
@@ -59,6 +63,13 @@ public class Search{
 				}
 			}
 			array3.add(charsInARow);
+			if(array4.size() < 100)
+			{
+				if(charsInARow > array2Token.length - 1)
+				{
+					array4.add(i);
+				}
+			}
 			charsInARow = 0;
 		}
 		
@@ -98,6 +109,7 @@ public class Search{
 				}
 			}
 		}
+		
 		//Sort array3 into descending order because its an Integer arraylist.
 		//Create our hashmap with Collection as the string value with an integer and a String
 		//that will allow for duplicate map values.
@@ -129,7 +141,7 @@ public class Search{
 			}
 			for(int y = 0; y < numOfDuplicatesWanted; y++)
 			{
-				sqlString = assertThat(map.get(array3.get(c)).get(y)).isEqualTo(String.valueOf(b));
+				sqlString = assertThat(map.get(array3.get(c)).get(y)).isEqualTo(String.valueOf(array4.get(b));
 				result = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + sqlString);
 				topResult[b] = result.getString("Username");
 				if(y < numOfDuplicatesWanted - 1)
