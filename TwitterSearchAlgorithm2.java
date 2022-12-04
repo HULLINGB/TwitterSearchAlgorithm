@@ -69,7 +69,7 @@ public class Search{
 		//Collection as value will help us access different positions with duplicate keys
 		//because our matching algorithm on lines 53 - 61 can return duplicate values.
 		//(https://www.baeldung.com/java-map-duplicate-keys)
-		Map<List<String>, int> map = new HashMap<>();
+		Map<int, List<String>> map = new HashMap<>();
 		int numOfDuplicatesWanted = 0;
 		long a = 1;
 		long c = 0;
@@ -95,7 +95,7 @@ public class Search{
 				a++;
 			}
 			List<String> list = new ArrayList<>();
-			map.put(list, array3.get(b);
+			map.put(array3.get(b), list);
 			for(int i = 0; i < numOfDuplicatesWanted; i++)
 			{
 				map.get(array3.get(c)).add(String.valueOf(b));
