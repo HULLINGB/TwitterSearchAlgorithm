@@ -67,7 +67,7 @@ public class Search{
 		long a = 1;
 		long c = 0;
 		long d = 0;
-		for(long b = 0; b < num; b++)
+		for(int b = 0; b < num; b++)
 		{
 			//here we just call a String.valueOf() to skip assigning int array3 to an String array3
 			//multiple positions with the same key get assigned this way?
