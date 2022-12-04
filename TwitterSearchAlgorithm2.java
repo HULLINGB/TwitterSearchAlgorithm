@@ -72,6 +72,7 @@ public class Search{
 		int numOfDuplicatesWanted = 0;
 		long a = 1;
 		long c = 0;
+		long d = 0;
 		for(long b = 0; b < length; b++)
 		{
 			//here we just call a String.valueOf() to skip assigning int array3 to an String array3
@@ -96,7 +97,7 @@ public class Search{
 			map.put(list, array3.get(b);
 			for(int i = 0; i < numOfDuplicatesWanted; i++)
 			{
-				map.get(array3.get(i).add(String.valueOf(b));
+				map.get(array3.get(c).add(String.valueOf(b));
 				if(i < numOfDuplicatesWanted - 1)
 				{
 					b++;
@@ -128,7 +129,7 @@ public class Search{
 			}
 			for(int y = 0; y < numOfDuplicatesWanted; y++)
 			{
-				sqlString = assertThat(map.get(array3.get(b)).get(y)).isEqualTo(b);
+				sqlString = assertThat(map.get(array3.get(c)).get(y)).isEqualTo(String.valueOf(b));
 				topResult[b] = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + sqlString);
 				if(y < numOfDuplicatesWanted - 1)
 				{
