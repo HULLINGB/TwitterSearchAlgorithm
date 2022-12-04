@@ -1,6 +1,22 @@
 import java.util.*;
 import java.sql.*;
 
+/**
+In TwitterSearchAlgorithm3.java we added a mechanism to search 
+all of the entire size of the Twitter database to see every entry the
+has the same number of charsInARow. The difference in the versions between
+TwitterSearchAlgorithm.java and TwitterSearchAlgorithm2.java is the HashMap
+taking duplicate characters. The difference between TwitterSearchAlgorithm2.java
+and TwitterSearchAlgorithm3.java is the search of every account I put into Algorithm 3. 
+TwitterSearchAlgorithm3.java. The problem we are trying to solve is what we want to return
+when we do a search and many accounts have the same number of matching characters. Then we 
+would need a HashMap with a list. Otherwise, we could just use a normal HashMap and not worry 
+about too many accounts having the same charsInARow. If many accounts return the same value for 
+charsInARow, we may have a funky output or not return the main account at all. It may be best to 
+rank accounts by priority, so that we know which accounts should be recognized as "verified" or 
+"official" for example.
+
+**/
 public class Search{
 	
 	ResultSet result;
