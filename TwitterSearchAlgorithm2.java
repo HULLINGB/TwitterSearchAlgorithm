@@ -98,7 +98,7 @@ public class Search{
 			map.put(list, array3.get(b);
 			for(int i = 0; i < numOfDuplicatesWanted; i++)
 			{
-				map.get(array3.get(c)).add(String.valueOf(b);
+				map.get(array3.get(c)).add(String.valueOf(b));
 				if(i < numOfDuplicatesWanted - 1)
 				{
 					b++;
