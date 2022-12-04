@@ -50,7 +50,7 @@ public class Search{
 		ArrayList<Integer> array3 = new ArrayList<Integer>();
 		//To keep track of the order of the array3 that will be sorted in
 		//a nice Collections sort function.
-		//ArrayList<Integer> array4 = new ArrayList<Integer>();
+		ArrayList<Integer> array4 = new ArrayList<Integer>();
 		int size = 0;
 		for(int i = 0; i < length; i++)
 		{
@@ -63,6 +63,12 @@ public class Search{
 				}
 			}
 			array3.add(charsInARow);
+			
+			if(charsInARow > array2Token.length - 1)
+			{
+					array4.add(i);
+			}
+			}
 			charsInARow = 0;
 		}
 		
@@ -85,7 +91,8 @@ public class Search{
 				{
 					numOfDuplicatesWanted = numOfDuplicatesWanted + 1;
 				}
-				if(array3.get(c) != array3.get(a))
+				//This does a search of all of the entries in array3
+				if(a < length - 1)
 				{
 					break;
 				}
@@ -125,7 +132,8 @@ public class Search{
 				{
 					numOfDuplicatesWanted = numOfDuplicatesWanted + 1;
 				}
-				if(array3.get(c) != array3.get(a))
+				//This does a search of all of the entries in array3
+				if(a < length - 1)
 				{
 					break;
 				}
@@ -133,7 +141,8 @@ public class Search{
 			}
 			for(int y = 0; y < numOfDuplicatesWanted; y++)
 			{
-				sqlString = assertThat(map.get(array3.get(c)).get(y)).isEqualTo(String.valueOf(b));
+				//Cant tell if this statement is correct.
+				sqlString = assertThat(map.get(array3.get(c)).get(y)).isEqualTo(String.valueOf(array4.get(b));
 				result = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + sqlString);
 				topResult[b] = result.getString("Username");
 				if(y < numOfDuplicatesWanted - 1)

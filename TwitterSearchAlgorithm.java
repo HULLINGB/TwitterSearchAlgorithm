@@ -1,9 +1,9 @@
 import java.util.*;
 import java.sql.*;
 
+
 public class Search{
 	
-	ResultSet result;
 	//We assume 100 for now because we cannot return 2 billion accounts
 	int num = 150;
 	String[] topResult = new String[num];
@@ -20,7 +20,7 @@ public class Search{
 		//accounts starts at account 0, going to 1, 2, 3, 4......
 		for(int i = 0; i < topResult.length; i++)
 		{
- 			System.out.println(topResult[i]);
+			System.out.println(topResult[i]);
 		}
 	}
 
@@ -48,11 +48,7 @@ public class Search{
 		}
 		int charsInARow = 0;
 		ArrayList<Integer> array3 = new ArrayList<Integer>();
-		//To keep track of the order of the array3 that will be sorted in
-		//a nice Collections sort function.
-		//ArrayList<Integer> array4 = new ArrayList<Integer>();
-		int size = 0;
-		for(int i = 0; i < length; i++)
+		for(long i = 0; i < length; i++)
 		{
 			char[] array2Token = array2.get(i).toCharArray();
 			for(int z = 0; z < array2Token.length; z++)
@@ -65,52 +61,53 @@ public class Search{
 			array3.add(charsInARow);
 			charsInARow = 0;
 		}
-		
-		Map<int, List<String>> map = new HashMap<>();
+		//Sort array3 into descending order because its an Integer arraylist.
+		Collections.sort(array3, Collections.reverseOrder());
+		//Create our hashmap with Collection as the string value with an integer and a String
+		//that will allow for duplicate map values.
+		//Normal hashmap does not take duplicate key values in map.get()
+		//Collection as value will help us access different positions with duplicate keys
+		//because our matching algorithm on lines 53 - 61 can return duplicate values.
+		//(https://www.baeldung.com/java-map-duplicate-keys)
+		Map<List<Integer>, String> map = new HashMap<>();
+		Map<int, String> map2 = new HashMap<>();
 		int numOfDuplicatesWanted = 0;
 		long a = 1;
 		long c = 0;
-		long d = 0;
-		for(int b = 0; b < num; b++)
+		for(long b = 0; b < length; b++)
 		{
 			//here we just call a String.valueOf() to skip assigning int array3 to an String array3
 			//multiple positions with the same key get assigned this way?
 			//otherwise we will have to just 
 			a = b + 1;
 			c = b;
-			numOfDuplicatesWanted = 1;
-			for( ; ; )
+			numOfDuplicatesWanted = 0;
+			while(array3[c] == array3[a])
 			{
-				if(array3.get(c) == array3.get(a))
-				{
 					numOfDuplicatesWanted = numOfDuplicatesWanted + 1;
-				}
-				if(array3.get(c) != array3.get(a))
-				{
-					break;
-				}
-				a++;
+					a++;
 			}
-			List<String> list = new ArrayList<>();
-			map.put(array3.get(b), list);
-			for(int i = 0; i < numOfDuplicatesWanted; i++)
+			if(numOfDuplicatesWanted > 0)
 			{
-				map.get(array3.get(c)).add(String.valueOf(b));
-				if(i < numOfDuplicatesWanted - 1)
+				List<Integer> list = new ArrayList<>();
+				map.put(list, array3[b]);
+				for(int i = 0; i < numOfDuplicatesWanted; i++)
 				{
-					b++;
+					map.get(String.valueOf(array3.get(i)).add(b);
+					if(i < numOfDuplicatesWanted - 1)
+					{
+						b++;
+					}
 				}
+			}
+			if(numOfDuplicatesWanted = 0)
+			{
+				map2.put(String.valueOf(array3.get(b)), b);
 			}
 		}
-		//Sort array3 into descending order because its an Integer arraylist.
-		//Create our hashmap with Collection as the string value with an integer and a String
-		//that will allow for duplicate map values.
-		//Normal hashmap does not take duplicate key values in map.get()
-		//Collection as value will help us access different positions with duplicate keys
-		Collections.sort(array3, Collections.reverseOrder());
 		//Change p to String to get our String values from array 4 to retrieve the int values in
 		//our hashmap, which will return integers, or our "account number"
-		String sqlString = "";
+		int sqlString = "";
 		for(int b = 0; b < num; b++)
 		{	
 			//Using assertThat() will allow us to access each
@@ -118,29 +115,28 @@ public class Search{
 			//that we are trying with the same String key
 			a = b + 1;
 			c = b;
-			numOfDuplicatesWanted = 1;
-			for( ; ; )
+			numOfDuplicatesWanted = 0;
+			while(array3[c] == array3[a])
 			{
-				if(array3.get(c) == array3.get(a))
-				{
 					numOfDuplicatesWanted = numOfDuplicatesWanted + 1;
-				}
-				if(array3.get(c) != array3.get(a))
-				{
-					break;
-				}
-				a++;
+					a++;
 			}
-			for(int y = 0; y < numOfDuplicatesWanted; y++)
+			if(numOfDuplicatesWanted > 0)
 			{
-				sqlString = assertThat(map.get(array3.get(c)).get(y)).isEqualTo(String.valueOf(b));
-				result = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + sqlString);
-				topResult[b] = result.getString("Username");
-				if(y < numOfDuplicatesWanted - 1)
+				for(int y = 0; y < numOfDuplicatesWanted; y++)
 				{
-					b++;
+					sqlString = assertThat(map.get(array3.get(b)).get(y).isEqualTo(b));
+					topResult[b] = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(sqlString));
+					if(y < numOfDuplicatesWanted - 1)
+					{
+						b++;
+					}
 				}
+			}
+			if(numOfDuplicatesWanted = 0)
+			{
+				topResult[b] = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(map2.get(String.valueof(array3.get(b))));
 			}	
+			}
 		}
 	}
-}
