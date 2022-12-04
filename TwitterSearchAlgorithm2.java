@@ -3,6 +3,7 @@ import java.sql.*;
 
 public class Search{
 	
+	ResultSet result;
 	//We assume 100 for now because we cannot return 2 billion accounts
 	int num = 150;
 	String[] topResult = new String[num];
@@ -19,7 +20,8 @@ public class Search{
 		//accounts starts at account 0, going to 1, 2, 3, 4......
 		for(int i = 0; i < topResult.length; i++)
 		{
-			System.out.println(topResult[i]);
+			topResult[i] = result.getString("Username");
+ 			System.out.println(topResult[i]);
 		}
 	}
 
@@ -130,7 +132,7 @@ public class Search{
 			for(int y = 0; y < numOfDuplicatesWanted; y++)
 			{
 				sqlString = assertThat(map.get(array3.get(c)).get(y)).isEqualTo(String.valueOf(b));
-				topResult[b] = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + sqlString);
+				result = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + sqlString);
 				if(y < numOfDuplicatesWanted - 1)
 				{
 					b++;
