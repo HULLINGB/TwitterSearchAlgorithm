@@ -61,14 +61,9 @@ public class Search{
 			array3.add(charsInARow);
 			charsInARow = 0;
 		}
-		//Sort array3 into descending order because its an Integer arraylist.
-		Collections.sort(array3, Collections.reverseOrder());
-		//Create our hashmap with Collection as the string value with an integer and a String
-		//that will allow for duplicate map values.
-		//Normal hashmap does not take duplicate key values in map.get()
-		//Collection as value will help us access different positions with duplicate keys
-		//because our matching algorithm on lines 53 - 61 can return duplicate values.
-		//(https://www.baeldung.com/java-map-duplicate-keys)
+		
+		
+		
 		Map<int, List<String>> map = new HashMap<>();
 		int numOfDuplicatesWanted = 0;
 		long a = 1;
@@ -105,6 +100,12 @@ public class Search{
 				}
 			}
 		}
+		//Sort array3 into descending order because its an Integer arraylist.
+		//Create our hashmap with Collection as the string value with an integer and a String
+		//that will allow for duplicate map values.
+		//Normal hashmap does not take duplicate key values in map.get()
+		//Collection as value will help us access different positions with duplicate keys
+		Collections.sort(array3, Collections.reverseOrder());
 		//Change p to String to get our String values from array 4 to retrieve the int values in
 		//our hashmap, which will return integers, or our "account number"
 		String sqlString = "";
