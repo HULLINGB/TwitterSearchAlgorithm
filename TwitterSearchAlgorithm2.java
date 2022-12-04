@@ -80,10 +80,17 @@ public class Search{
 			a = b + 1;
 			c = b;
 			numOfDuplicatesWanted = 1;
-			while(array3[c] == array3[a])
+			for( ; ; )
 			{
+				if(array3[c] == array3[a])
+				{
 					numOfDuplicatesWanted = numOfDuplicatesWanted + 1;
 					a++;
+				}
+				if(array3[c] != array3[a])
+				{
+					break;
+				}
 			}
 			List<Integer> list = new ArrayList<>();
 			map.put(list, array3[b]);
@@ -107,10 +114,17 @@ public class Search{
 			a = b + 1;
 			c = b;
 			numOfDuplicatesWanted = 1;
-			while(array3[c] == array3[a])
+			for( ; ; )
 			{
+				if(array3[c] == array3[a])
+				{
 					numOfDuplicatesWanted = numOfDuplicatesWanted + 1;
 					a++;
+				}
+				if(array3[c] != array3[a])
+				{
+					break;
+				}
 			}
 			for(int y = 0; y < numOfDuplicatesWanted; y++)
 			{
