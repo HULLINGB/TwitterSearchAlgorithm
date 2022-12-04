@@ -68,7 +68,7 @@ public class Search{
 		//Collection as value will help us access different positions with duplicate keys
 		//because our matching algorithm on lines 53 - 61 can return duplicate values.
 		//(https://www.baeldung.com/java-map-duplicate-keys)
-		Map<List<Integer>, String> map = new HashMap<>();
+		Map<List<String>, int> map = new HashMap<>();
 		int numOfDuplicatesWanted = 0;
 		long a = 1;
 		long c = 0;
@@ -82,21 +82,21 @@ public class Search{
 			numOfDuplicatesWanted = 1;
 			for( ; ; )
 			{
-				if(array3[c] == array3[a])
+				if(array3.get(c) == array3.get(a))
 				{
 					numOfDuplicatesWanted = numOfDuplicatesWanted + 1;
 				}
-				if(array3[c] != array3[a])
+				if(array3.get(c) != array3.get(a))
 				{
 					break;
 				}
 				a++;
 			}
-			List<Integer> list = new ArrayList<>();
-			map.put(list, String.valueOf(array3[b]));
+			List<String> list = new ArrayList<>();
+			map.put(list, array3.get(b);
 			for(int i = 0; i < numOfDuplicatesWanted; i++)
 			{
-				map.get(String.valueOf(array3.get(i)).add(b);
+				map.get(array3.get(i).add(String.valueOf(b));
 				if(i < numOfDuplicatesWanted - 1)
 				{
 					b++;
@@ -116,11 +116,11 @@ public class Search{
 			numOfDuplicatesWanted = 1;
 			for( ; ; )
 			{
-				if(array3[c] == array3[a])
+				if(array3.get(c) == array3.get(a))
 				{
 					numOfDuplicatesWanted = numOfDuplicatesWanted + 1;
 				}
-				if(array3[c] != array3[a])
+				if(array3.get(c) != array3.get(a))
 				{
 					break;
 				}
@@ -128,8 +128,8 @@ public class Search{
 			}
 			for(int y = 0; y < numOfDuplicatesWanted; y++)
 			{
-				sqlString = assertThat(map.get(array3.get(b)).get(y).isEqualTo(b));
-				topResult[b] = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(sqlString));
+				sqlString = assertThat(map.get(array3.get(b)).get(y)).isEqualTo(b);
+				topResult[b] = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + sqlString);
 				if(y < numOfDuplicatesWanted - 1)
 				{
 					b++;
