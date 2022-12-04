@@ -85,12 +85,12 @@ public class Search{
 				if(array3[c] == array3[a])
 				{
 					numOfDuplicatesWanted = numOfDuplicatesWanted + 1;
-					a++;
 				}
 				if(array3[c] != array3[a])
 				{
 					break;
 				}
+				a++;
 			}
 			List<Integer> list = new ArrayList<>();
 			map.put(list, array3[b]);
@@ -119,12 +119,12 @@ public class Search{
 				if(array3[c] == array3[a])
 				{
 					numOfDuplicatesWanted = numOfDuplicatesWanted + 1;
-					a++;
 				}
 				if(array3[c] != array3[a])
 				{
 					break;
 				}
+				a++;
 			}
 			for(int y = 0; y < numOfDuplicatesWanted; y++)
 			{
