@@ -62,8 +62,6 @@ public class Search{
 			charsInARow = 0;
 		}
 		
-		
-		
 		Map<int, List<String>> map = new HashMap<>();
 		int numOfDuplicatesWanted = 0;
 		long a = 1;
