@@ -4,6 +4,7 @@ import java.sql.*;
 
 public class Search{
 	
+	ResultSet result;
 	//We assume 100 for now because we cannot return 2 billion accounts
 	int num = 150;
 	String[] topResult = new String[num];
@@ -20,7 +21,7 @@ public class Search{
 		//accounts starts at account 0, going to 1, 2, 3, 4......
 		for(int i = 0; i < topResult.length; i++)
 		{
-			System.out.println(topResult[i]);
+ 			System.out.println(topResult[i]);
 		}
 	}
 
@@ -48,6 +49,8 @@ public class Search{
 		}
 		int charsInARow = 0;
 		ArrayList<Integer> array3 = new ArrayList<Integer>();
+		//To keep track of the order of the array3 that will be sorted in
+		//a nice Collections sort function.
 		for(long i = 0; i < length; i++)
 		{
 			char[] array2Token = array2.get(i).toCharArray();
@@ -59,84 +62,26 @@ public class Search{
 				}
 			}
 			array3.add(charsInARow);
-			charsInARow = 0;
 		}
-		//Sort array3 into descending order because its an Integer arraylist.
-		Collections.sort(array3, Collections.reverseOrder());
-		//Create our hashmap with Collection as the string value with an integer and a String
-		//that will allow for duplicate map values.
-		//Normal hashmap does not take duplicate key values in map.get()
-		//Collection as value will help us access different positions with duplicate keys
-		//because our matching algorithm on lines 53 - 61 can return duplicate values.
-		//(https://www.baeldung.com/java-map-duplicate-keys)
-		Map<List<Integer>, String> map = new HashMap<>();
-		Map<int, String> map2 = new HashMap<>();
-		int numOfDuplicatesWanted = 0;
-		long a = 1;
-		long c = 0;
-		for(long b = 0; b < length; b++)
-		{
-			//here we just call a String.valueOf() to skip assigning int array3 to an String array3
-			//multiple positions with the same key get assigned this way?
-			//otherwise we will have to just 
-			a = b + 1;
-			c = b;
-			numOfDuplicatesWanted = 0;
-			while(array3[c] == array3[a])
-			{
-					numOfDuplicatesWanted = numOfDuplicatesWanted + 1;
-					a++;
+		int[] array4 = new int[num];
+		//Sort array3 in descending order
+		//We need to do a custom algorithm to put in the account number.
+		for(long x = 0; x < length; x++)
+        {
+            for(long y = 0; y < length; y++)
+            {
+                if(array3.get(x) > array3.get(y))
+                {
+				//all we need is the last value that is
+				//swapped with our array4[x]
+				array4[x] = y;
+                }
 			}
-			if(numOfDuplicatesWanted > 0)
-			{
-				List<Integer> list = new ArrayList<>();
-				map.put(list, array3[b]);
-				for(int i = 0; i < numOfDuplicatesWanted; i++)
-				{
-					map.get(String.valueOf(array3.get(i)).add(b);
-					if(i < numOfDuplicatesWanted - 1)
-					{
-						b++;
-					}
-				}
-			}
-			if(numOfDuplicatesWanted = 0)
-			{
-				map2.put(String.valueOf(array3.get(b)), b);
-			}
-		}
-		//Change p to String to get our String values from array 4 to retrieve the int values in
-		//our hashmap, which will return integers, or our "account number"
-		int sqlString = "";
+        }		
 		for(int b = 0; b < num; b++)
 		{	
-			//Using assertThat() will allow us to access each
-			//next position of the map int value (account number)
-			//that we are trying with the same String key
-			a = b + 1;
-			c = b;
-			numOfDuplicatesWanted = 0;
-			while(array3[c] == array3[a])
-			{
-					numOfDuplicatesWanted = numOfDuplicatesWanted + 1;
-					a++;
-			}
-			if(numOfDuplicatesWanted > 0)
-			{
-				for(int y = 0; y < numOfDuplicatesWanted; y++)
-				{
-					sqlString = assertThat(map.get(array3.get(b)).get(y).isEqualTo(b));
-					topResult[b] = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(sqlString));
-					if(y < numOfDuplicatesWanted - 1)
-					{
-						b++;
-					}
-				}
-			}
-			if(numOfDuplicatesWanted = 0)
-			{
-				topResult[b] = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(map2.get(String.valueof(array3.get(b))));
-			}	
-			}
-		}
+			topResult[b] = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(array4[b]));
+		}	
 	}
+	}
+}
