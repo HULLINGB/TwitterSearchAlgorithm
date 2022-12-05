@@ -80,7 +80,7 @@ public class Search{
 				}
 				z++;
 			}	
-			z = 0;
+			z = 1;
 		}		
 		for(int b = length2 - 1; b < num; b++)
 		{	
