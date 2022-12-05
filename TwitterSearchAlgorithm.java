@@ -64,8 +64,12 @@ public class Search{
 		//Sort array3 in descending order
 		//We need to do a custom algorithm to put in the account number.
 		//Then we assign the results to topResult[] and output
-		for(int x = 0; x < num; x++)
+		for(long x = 0; x < length; x++)
         {
+			if(x == num)
+			{
+				break;
+			}
             for(long y = 0; y < length; y++)
             {
                 if(array3.get(x) > array3.get(y))
