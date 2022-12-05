@@ -79,11 +79,12 @@ public class Search{
 				}
 			}
 			array3.add(charsInARow);
-			
+			/**
 			if(charsInARow > array2Token.length - 1)
 			{
 					array4.add(i);
 			}
+			**/
 			}
 			charsInARow = 0;
 		}
@@ -106,9 +107,10 @@ public class Search{
 				if(array3.get(c) == array3.get(a))
 				{
 					numOfDuplicatesWanted = numOfDuplicatesWanted + 1;
+					array4.add(a);
 				}
 				//This does a search of all of the entries in array3
-				if(a < length - 1)
+				if(a == length - 1)
 				{
 					break;
 				}
@@ -149,7 +151,7 @@ public class Search{
 					numOfDuplicatesWanted = numOfDuplicatesWanted + 1;
 				}
 				//This does a search of all of the entries in array3
-				if(a < length - 1)
+				if(a == length - 1)
 				{
 					break;
 				}
