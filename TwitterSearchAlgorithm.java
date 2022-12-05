@@ -83,12 +83,15 @@ public class Search{
 			}
 			y++;
         }		
-		for(int l = 0; l < 10; l++
+		for(int l = 0; l < length2; l++
 		{
 		result = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + nextHighestValue[l]);
-		topResult[l] = result.getString("Username"); 
+			while(result.next())
+			{
+				topResult[b] = result.getString("Username");
+			}		
 		}
-		for(int b = 10; b < num; b++)
+		for(int b = length2 - 1; b < num; b++)
 		{	
 			result = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(array4[b]));
 			while(result.next())
