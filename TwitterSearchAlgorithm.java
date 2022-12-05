@@ -1,9 +1,9 @@
 import java.util.*;
 import java.sql.*;
 
-
 public class Search{
 	
+	ResultSet result;
 	//We assume 100 for now because we cannot return 2 billion accounts
 	int num = 150;
 	String[] topResult = new String[num];
@@ -81,7 +81,12 @@ public class Search{
         }		
 		for(int b = 0; b < num; b++)
 		{	
-			topResult[b] = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(array4[b]));
+			result = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(array4[b]));
+			while(result.next())
+			{
+				topResult[b] = result.getString("Username");
+				b++;
+			}				
 		}	
 	}
 }
