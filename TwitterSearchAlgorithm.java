@@ -65,32 +65,22 @@ public class Search{
 		//Sort array3 in descending order
 		//We need to do a custom algorithm to put in the account number.
 		//Then we assign the results to topResult[] and output
-		long y = 1;
+		long z = 1;
 		//10 top entries
 		int length2 = 10;
-		long[] nextHighestValue = new long[length2];
 		for(long x = 0; x < length; x++)
         {
-            if(array3.get(x) < array3.get(y))
-            {
-				//track where the highest value for charsInARow
-				//and add it to array4
-				nextHighestValue[x] = array3.get(y);
-            }
-			if(y == array3.size() - 1)
+			for(long y = 0; y < length; y++)
 			{
-			break;	
-			}
-			y++;
-        }		
-		for(int l = 0; l < length2; l++
-		{
-		result = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + nextHighestValue[l]);
-			while(result.next())
-			{
-				topResult[b] = result.getString("Username");
-			}		
-		}
+				if(array3.get(y) < array3.get(z))
+				{
+						//track where the highest value for charsInARow
+						//and add it to array4
+						array4[x] = z;
+				}
+				z++;
+			}	
+		}		
 		for(int b = length2 - 1; b < num; b++)
 		{	
 			result = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(array4[b]));
