@@ -66,7 +66,7 @@ public class Search{
 		//Then we assign the results to topResult[] and output
 		for(long x = 0; x < length; x++)
         {
-			if(x == num)
+			if(x > num - 1)
 			{
 				break;
 			}
