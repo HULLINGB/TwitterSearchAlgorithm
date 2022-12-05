@@ -4,7 +4,6 @@ import java.sql.*;
 
 public class Search{
 	
-	ResultSet result;
 	//We assume 100 for now because we cannot return 2 billion accounts
 	int num = 150;
 	String[] topResult = new String[num];
@@ -49,8 +48,6 @@ public class Search{
 		}
 		int charsInARow = 0;
 		ArrayList<Integer> array3 = new ArrayList<Integer>();
-		//To keep track of the order of the array3 that will be sorted in
-		//a nice Collections sort function.
 		for(long i = 0; i < length; i++)
 		{
 			char[] array2Token = array2.get(i).toCharArray();
@@ -66,14 +63,18 @@ public class Search{
 		int[] array4 = new int[num];
 		//Sort array3 in descending order
 		//We need to do a custom algorithm to put in the account number.
+		//Then we assign the results to topResult[] and output
 		for(long x = 0; x < length; x++)
         {
             for(long y = 0; y < length; y++)
             {
                 if(array3.get(x) > array3.get(y))
                 {
-				//all we need is the last value that is
+				//All we need is the last value that is
 				//swapped with our array4[x]
+				//The final time the condition is met = the
+				//account number of the next highest value of array3,
+				//the next highest number of charsInARow
 				array4[x] = y;
                 }
 			}
@@ -82,6 +83,5 @@ public class Search{
 		{	
 			topResult[b] = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(array4[b]));
 		}	
-	}
 	}
 }
