@@ -82,10 +82,10 @@ public class Search{
 		for(int b = 0; b < num; b++)
 		{	
 			result = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(array4[b]));
+			
 			while(result.next())
 			{
 				topResult[b] = result.getString("Username");
-				b++;
 			}				
 		}	
 	}
