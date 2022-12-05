@@ -68,7 +68,7 @@ public class Search{
 		//a nice Collections sort function.
 		ArrayList<Integer> array4 = new ArrayList<Integer>();
 		int size = 0;
-		for(int i = 0; i < length; i++)
+		for(long i = 0; i < length; i++)
 		{
 			char[] array2Token = array2.get(i).toCharArray();
 			for(int z = 0; z < array2Token.length; z++)
