@@ -68,7 +68,7 @@ public class Search{
 		long z = 1;
 		//10 top entries
 		int length2 = 10;
-		for(long x = 0; x < length; x++)
+		for(long x = 0; x < num; x++)
         {
 			for(long y = 0; y < length; y++)
 			{
@@ -80,6 +80,7 @@ public class Search{
 				}
 				z++;
 			}	
+			z = 0;
 		}		
 		for(int b = length2 - 1; b < num; b++)
 		{	
