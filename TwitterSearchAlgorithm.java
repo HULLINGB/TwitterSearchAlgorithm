@@ -59,6 +59,7 @@ public class Search{
 				}
 			}
 			array3.add(charsInARow);
+			charsInARow = 0;
 		}
 		int[] array4 = new int[num];
 		//Sort array3 in descending order
@@ -70,19 +71,14 @@ public class Search{
             {
                 if(array3.get(x) > array3.get(y))
                 {
-				//All we need is the last value that is
-				//swapped with our array4[x]
-				//The final time the condition is met = the
-				//account number of the next highest value of array3,
-				//the next highest number of charsInARow
-				array4[x] = y;
+				//track where the highest value for charsInARow
+				//and add it to 
                 }
 			}
         }		
 		for(int b = 0; b < num; b++)
 		{	
 			result = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(array4[b]));
-			
 			while(result.next())
 			{
 				topResult[b] = result.getString("Username");
