@@ -1,6 +1,10 @@
 import java.util.*;
 import java.sql.*;
 
+//This algorithm doesn't account for duplicate
+//HashMap entries. We can assume their is only one
+//account that will have the total charsInARow match
+//the length of account name, which is the main account.
 public class Search{
 	
 	//We assume 100 for now because we cannot return 2 billion accounts
@@ -61,17 +65,22 @@ public class Search{
 			array3.add(charsInARow);
 			charsInARow = 0;
 		}
-		//Sort HashMap into descending order to keep track of the original key number
+		//Create the HashMap before we sort array3
 		Map<int, String> map = new HashMap<>();
 		for(long b = 0; b < length; b++)
 		{
-			//here we just call a String.valueOf() to skip assigning int array3 to an String array3
-			//multiple positions with the same key get assigned this way?
-			//otherwise we will have to just
-			List<String> list = new ArrayList<>();
 			map.put(array3[b], b);
 		}
-		
+		//Sort array3 after we create HashMap so we can reference
+		//the parts of HashMap with the correct key. This is a method
+		//That assumes no duplicate HashMap values, or at least the top
+		//accounts with highest charsInARow aren't duplicates so our returned
+		//values are good. We reference the account number in our SQL by charsInARow
+		Collections.sort(array3, Collections.reverseOrder()); 
+		//Use sorted array3 to reference the highest number of
+		//charsInARow in our HashMap that was created with the
+		//array3 in order of 0 - length and the charsInARow at
+		//each position
 		for(int b = a; b < num; b++)
 		{	
 				topResult[b] = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + map.get(array3[b]));
