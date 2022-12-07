@@ -3,7 +3,6 @@ import java.sql.*;
 
 public class Search{
 	
-	ResultSet result;
 	//We assume 100 for now because we cannot return 2 billion accounts
 	int num = 150;
 	String[] topResult = new String[num];
@@ -20,7 +19,7 @@ public class Search{
 		//accounts starts at account 0, going to 1, 2, 3, 4......
 		for(int i = 0; i < topResult.length; i++)
 		{
- 			System.out.println(topResult[i]);
+			System.out.println(topResult[i]);
 		}
 	}
 
@@ -46,6 +45,7 @@ public class Search{
 			//here we assume that each entry has a unique account number, starting at 0 or 1, going to infinity.
 			array2.add(database.executeQuery("SELECT Username FROM Twitter WHERE AccountNum = " + b));
 		}
+		int p = 0;
 		int charsInARow = 0;
 		ArrayList<Integer> array3 = new ArrayList<Integer>();
 		for(long i = 0; i < length; i++)
@@ -61,28 +61,20 @@ public class Search{
 			array3.add(charsInARow);
 			charsInARow = 0;
 		}
-		int[] array4 = new int[num];
-		//Sort array3 in descending order
-		//We need to do a custom algorithm to put in the account number.
-		for(long x = 0; x < num; x++)
-        {
-			for(long y = 0; y < length; y++)
-			{
-				if(array3.get(x) < array3.get(y))
-				{
-						//track where the highest value for charsInARow
-						//and add it to array4
-						array4[x] = z;
-				}
-			}	
-		}		
-		for(int b = 0;; b < num; b++)
+		//Sort HashMap into descending order to keep track of the original key number
+		Map<int, String> map = new HashMap<>();
+		for(long b = 0; b < length; b++)
+		{
+			//here we just call a String.valueOf() to skip assigning int array3 to an String array3
+			//multiple positions with the same key get assigned this way?
+			//otherwise we will have to just
+			List<String> list = new ArrayList<>();
+			map.put(array3[b], b);
+		}
+		
+		for(int b = a; b < num; b++)
 		{	
-			result = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(array4[b]));
-			while(result.next())
-			{
-				topResult[b] = result.getString("Username");
-			}				
-		}	
+				topResult[b] = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + map.get(array3[b]));
+		}
 	}
 }
