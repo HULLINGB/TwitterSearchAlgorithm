@@ -83,7 +83,7 @@ public class Search{
 		//each position
 		for(int b = a; b < num; b++)
 		{	
-				topResult[b] = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(map.get(array3[b])));
+				topResult[b] = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(map.get(String.valueOf(array3[b]))));
 		}
 	}
 }
