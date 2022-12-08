@@ -66,10 +66,10 @@ public class Search{
 			charsInARow = 0;
 		}
 		//Create the HashMap before we sort array3
-		Map<int, String> map = new HashMap<>();
+        HashMap<String, Integer> map = new HashMap<>();
 		for(long b = 0; b < length; b++)
 		{
-			map.put(array3[b], b);
+			map.put(String.valueOf(array3[b]), b);
 		}
 		//Sort array3 after we create HashMap so we can reference
 		//the parts of HashMap with the correct key. This is a method
@@ -83,7 +83,7 @@ public class Search{
 		//each position
 		for(int b = a; b < num; b++)
 		{	
-				topResult[b] = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + map.get(array3[b]));
+				topResult[b] = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + String.valueOf(map.get(array3[b])));
 		}
 	}
 }
