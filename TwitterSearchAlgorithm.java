@@ -61,6 +61,10 @@ public class Search{
 				{
 					charsInARow = charsInARow + 1;
 				}
+				if(z == array1.length || z == array2Token.length)
+				{
+					break;
+				}
 			}
 			array3.add(charsInARow);
 			charsInARow = 0;
