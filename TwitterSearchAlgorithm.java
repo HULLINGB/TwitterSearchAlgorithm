@@ -57,13 +57,13 @@ public class Search{
 			char[] array2Token = array2.get(i).toCharArray();
 			for(int z = 0; z < array2Token.length; z++)
 			{
+				if(z == array1.length - 1)
+				{
+					break;
+				}
 				if(array1[z] == array2Token[z])
 				{
 					charsInARow = charsInARow + 1;
-				}
-				if(z == array1.length || z == array2Token.length)
-				{
-					break;
 				}
 			}
 			array3.add(charsInARow);
