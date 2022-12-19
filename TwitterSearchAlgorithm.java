@@ -29,7 +29,7 @@ public class Search{
 		ArrayList<String> array2 = new ArrayList<String>();
 		for(long b = 0; b < length; b++)
 		{
-			array2.add(database.executeQuery("SELECT Username FROM Twitter WHERE AccountNum = " + b));
+			array2.add(database.executeQuery("SELECT Username FROM Twitter WHERE AccountNum = " + String.valueOf(b)));
 		}
 		int p = 0;
 		int charsInARow = 0;
