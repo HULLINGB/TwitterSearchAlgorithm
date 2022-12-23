@@ -79,7 +79,7 @@ public class Search{
 			map.put(array3.get(b), String.valueOf(b));
 		}
 		Collections.sort(array3, Collections.reverseOrder()); 
-		int z = 0;
+
 		for(int b = a; b < num; b++)
 		{	
 			if(array3.get(i) > 0)
