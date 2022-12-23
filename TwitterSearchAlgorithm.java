@@ -1,12 +1,11 @@
 import java.util.*;
 import java.sql.*;
 
-
 public class Search{
 	
 	int num = 150;
 	String[] topResult = new String[num];
-	
+
 	public static void main(String[] args)
 	{
 		Scanner myObj = new Scanner(System.in);
@@ -14,7 +13,10 @@ public class Search{
 		search(input);
 		for(int i = 0; i < topResult.length; i++)
 		{
-			System.out.println(topResult[i]);
+			if(topResult[i] != null)
+			{
+				System.out.println(topResult[i]);
+			}
 		}
 	}
 
@@ -43,12 +45,21 @@ public class Search{
 				{
 					break;
 				}
+				
 				if(array1[z] == array2Token[z])
 				{
 					charsInARow = charsInARow + 1;
+				}else{
+					break;
 				}
 			}
-			array3.add(charsInARow);
+			if(charsInARow > 2)
+			{
+				array3.add(charsInARow);
+			}else
+            {
+                array3.add(0);
+            }
 			charsInARow = 0;
 		}
         HashMap<Integer, String> map = new HashMap<>();
@@ -57,9 +68,14 @@ public class Search{
 			map.put(array3.get(b), String.valueOf(b));
 		}
 		Collections.sort(array3, Collections.reverseOrder()); 
+		int z = 0;
 		for(int b = a; b < num; b++)
 		{	
-				topResult[b] = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + map.get(array3.get(b)));
+			if(array3.get(i) > 0)
+			{
+			topResult[z] = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + map.get(array3.get(b)));
+			z++;
+			}
 		}
 	}
 }
