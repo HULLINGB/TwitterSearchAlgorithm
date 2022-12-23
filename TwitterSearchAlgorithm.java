@@ -1,6 +1,11 @@
-import java.util.*;
-import java.sql.*;
-
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Collections;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.DriverManager;
 
 
 public class Search{
@@ -22,17 +27,24 @@ public class Search{
 	public void search(String input)
 	{
 		char[] array1 = input.toCharArray();
+		ArrayList<String> array2 = new ArrayList<String>();
+		try{
 		Class.forName("com.mysql.jdbc.Driver");  
 		Connection connection = DriverManager.getConnection(  
 				"jdbc:mysql://localhost:3306/Twitter","root","root");    
 		long length = SQLCOUNT();
 		Statement database = connection.createStatement();
-		ArrayList<String> array2 = new ArrayList<String>();
+		}catch(SQLException e)
+		{
+		}
 		for(long b = 0; b < length; b++)
 		{
-			array2.add(database.executeQuery("SELECT Username FROM Twitter WHERE AccountNum = " + String.valueOf(b)));
+			try{
+				array2.add(database.executeQuery("SELECT Username FROM Twitter WHERE AccountNum = " + String.valueOf(b)));
+			}catch(SQLException e)
+			{
+			}
 		}
-		int p = 0;
 		int charsInARow = 0;
 		ArrayList<Integer> array3 = new ArrayList<Integer>();
 		for(long i = 0; i < length; i++)
