@@ -4,21 +4,18 @@ import java.sql.*;
 
 
 public class Search{
-	
+	//Max number of results we would allow.
 	int num = 150;
 	String[] topResult = new String[num];
-
+	int count = 0;
 	public static void main(String[] args)
 	{
 		Scanner myObj = new Scanner(System.in);
 		String input = myObj.nextLine();
 		search(input);
-		for(int i = 0; i < topResult.length; i++)
+		for(int i = 0; i < count; i++)
 		{
-			if(topResult[i] != null)
-			{
-				System.out.println(topResult[i]);
-			}
+			System.out.println(topResult[i]);
 		}
 	}
 
@@ -75,8 +72,8 @@ public class Search{
 		{	
 			if(array3.get(i) > 0)
 			{
-			topResult[z] = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + map.get(array3.get(b)));
-			z++;
+			topResult[count] = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + map.get(array3.get(b)));
+			count++;
 			}
 		}
 	}
