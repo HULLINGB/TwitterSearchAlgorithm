@@ -66,7 +66,7 @@ public class Search{
 			}
 			if(charsInARow == array2token.length)
 			{
-				charsInARow = charsInARow + 2;
+				charsInARow = charsInARow + 3;
 			}
 			//1 or 2 charsInARow and above is suitable for a small sample size.
 			//if we have millions or billions of account names, we could require
