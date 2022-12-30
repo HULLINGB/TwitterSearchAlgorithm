@@ -64,7 +64,13 @@ public class Search{
 					break;
 				}
 			}
-			if(charsInARow > 2)
+			//1 or 2 charsInARow and above is suitable for a small sample size.
+			//if we have millions or billions of account names, we could require
+			//3, 4, or 5 charsInARow to count the account name in our list of results
+			//because repeat values for charsInARow in our HashMap will automatically default
+			//to the last assigned input to the hashmap, and will possibly print those values 
+			//multiple times in a row.
+			if(charsInARow > 3)
 			{
 				array3.add(charsInARow);
 			}else
