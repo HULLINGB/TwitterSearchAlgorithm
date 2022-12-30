@@ -64,6 +64,10 @@ public class Search{
 					break;
 				}
 			}
+			if(charsInARow == array2token.length)
+			{
+				charsInARow = charsInARow + 2;
+			}
 			//1 or 2 charsInARow and above is suitable for a small sample size.
 			//if we have millions or billions of account names, we could require
 			//3, 4, or 5 charsInARow to count the account name in our list of results
@@ -85,7 +89,6 @@ public class Search{
 			map.put(array3.get(b), String.valueOf(b));
 		}
 		Collections.sort(array3, Collections.reverseOrder()); 
-
 		for(int b = a; b < num; b++)
 		{	
 			if(array3.get(i) > 0)
