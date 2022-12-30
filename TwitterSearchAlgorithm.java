@@ -6,12 +6,13 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 
 
 public class Search{
 	//Max number of results we would allow.
 	int num = 150;
-	String[] topResult = new String[num];
+	ResultSet[] topResult = new String[num];
 	int count = 0;
 	public static void main(String[] args)
 	{
