@@ -12,16 +12,18 @@ import java.sql.ResultSet;
 public class Search{
 	//Max number of results we would allow.
 	int num = 150;
-	ResultSet[] topResult = new String[num];
+	ResultSet topResult = new String[num];
 	int count = 0;
+	String[] array = new String[num];
+	
 	public static void main(String[] args)
 	{
 		Scanner myObj = new Scanner(System.in);
 		String input = myObj.nextLine();
 		search(input);
-		for(int i = 0; i < count; i++)
+		for(int a = 0; a < count; a++)
 		{
-			System.out.println(topResult[i]);
+			System.out.println(array[a]);
 		}
 	}
 
@@ -90,11 +92,23 @@ public class Search{
 			map.put(array3.get(b), String.valueOf(b));
 		}
 		Collections.sort(array3, Collections.reverseOrder()); 
-		for(int b = a; b < num; b++)
+		int m = 0;
+		for(int i = 0; i < num; i++)
 		{	
 			if(array3.get(i) > 0)
 			{
-			topResult[count] = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + map.get(array3.get(b)));
+				topResult = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + map.get(array3.get(i)));
+				while(topResult.next())
+				{
+					array[count] = String.valueOf(topResult));
+				}
+				while(topResult.next())
+				{
+					topResult.absolute(m);
+					topResult.deleteRow();
+					m++;
+				}
+				m = 0;
 			count++;
 			}
 		}
