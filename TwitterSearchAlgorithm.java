@@ -14,6 +14,7 @@ public class Search{
 	int num = 150;
 	ResultSet topResult = new String[num];
 	int count = 0;
+	int len = 25;
 	String[] array = new String[num];
 	
 	public static void main(String[] args)
@@ -21,7 +22,7 @@ public class Search{
 		Scanner myObj = new Scanner(System.in);
 		String input = myObj.nextLine();
 		search(input);
-		for(int a = 0; a < count; a++)
+		for(int a = 0; a < len; a++)
 		{
 			System.out.println(array[a]);
 		}
@@ -100,7 +101,8 @@ public class Search{
 				topResult = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + map.get(array3.get(i)));
 				while(topResult.next())
 				{
-					array[count] = String.valueOf(topResult));
+					array[count] = String.valueOf(topResult.absolute(count));
+					count++;
 				}
 				while(topResult.next())
 				{
@@ -109,7 +111,6 @@ public class Search{
 					m++;
 				}
 				m = 0;
-			count++;
 			}
 		}
 	}
