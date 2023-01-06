@@ -12,7 +12,10 @@ import java.sql.ResultSet;
 public class Search{
 	//Max number of results we would allow.
 	int num = 150;
-	ResultSet topResult = new String[num];
+	ResultSet result;
+	Integer length = new Integer(11);
+	int length2 = 0
+	ResultSet topResult;
 	int count = 0;
 	int len = 25;
 	String[] array = new String[num];
@@ -36,12 +39,21 @@ public class Search{
 		Class.forName("com.mysql.jdbc.Driver");  
 		Connection connection = DriverManager.getConnection(  
 				"jdbc:mysql://localhost:3306/Twitter","root","root");    
-		long length = SQLCOUNT();
 		Statement database = connection.createStatement();
+		result = database.execute("SELECT COUNT(*) FROM Twitter");
 		}catch(SQLException e)
 		{
 		}
-		for(long b = 0; b < length; b++)
+		try{
+			while(result.next())
+			{
+			length = result.getInt(1);
+			}
+		}catch(Exception e)
+		{
+		}
+		length2 = length;
+		for(long b = 0; b < length2; b++)
 		{
 			try{
 				array2.add(database.executeQuery("SELECT Username FROM Twitter WHERE AccountNum = " + String.valueOf(b)));
@@ -73,7 +85,7 @@ public class Search{
 			{
 				charsInARow = charsInARow + 3;
 			}
-			//Give the entries that have the same charsInARow different values for the HashMap
+			//Give the entries with the same charsInARow higher values for HashMap key reference
 			while(x < array4.size())
             {
                 if(array4.get(x).equals(charsInARow))
@@ -83,12 +95,11 @@ public class Search{
                 x++;
             }
             x = 0;
-			//1 or 2 charsInARow and above is suitable for a small sample size.
-			//if we have millions or billions of account names, we could require
-			//3, 4, or 5 charsInARow to count the account name in our list of results
-			//because repeat values for charsInARow in our HashMap will automatically default
-			//to the last assigned input to the hashmap, and will possibly print those values 
-			//multiple times in a row.
+			//1 or 2 charsInARow and above is suitable for a small sample size. If we have
+			//millions or billions of account names, we could require 3, 4, or 5 charsInARow
+			//to count the account name in our list of results because repeat values
+			//for charsInARow in our HashMap will automatically default to the last 
+			//assigned input to the hashmap, and will possibly print those values multiple times 
 			if(charsInARow > 2)
 			{
 				array3.add(charsInARow);
