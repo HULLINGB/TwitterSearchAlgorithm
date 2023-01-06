@@ -51,6 +51,7 @@ public class Search{
 		}
 		int charsInARow = 0;
 		ArrayList<Integer> array3 = new ArrayList<Integer>();
+		int x = 0;
 		for(long i = 0; i < length; i++)
 		{
 			char[] array2Token = array2.get(i).toCharArray();
@@ -72,13 +73,23 @@ public class Search{
 			{
 				charsInARow = charsInARow + 3;
 			}
+			//Give the entries that have the same charsInARow different values for the HashMap
+			while(x < array4.size())
+            {
+                if(array4.get(x).equals(charsInARow))
+                {
+                    charsInARow++;
+                }
+                x++;
+            }
+            x = 0;
 			//1 or 2 charsInARow and above is suitable for a small sample size.
 			//if we have millions or billions of account names, we could require
 			//3, 4, or 5 charsInARow to count the account name in our list of results
 			//because repeat values for charsInARow in our HashMap will automatically default
 			//to the last assigned input to the hashmap, and will possibly print those values 
 			//multiple times in a row.
-			if(charsInARow > 3)
+			if(charsInARow > 2)
 			{
 				array3.add(charsInARow);
 			}else
