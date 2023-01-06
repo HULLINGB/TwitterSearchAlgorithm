@@ -123,7 +123,7 @@ public class Search{
 				topResult = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + map.get(array3.get(i)));
 				while(topResult.next())
 				{
-					array[count] = String.valueOf(topResult.absolute(count));
+					array[count] = topResult.getString(count);
 					count++;
 				}
 				while(topResult.next())
