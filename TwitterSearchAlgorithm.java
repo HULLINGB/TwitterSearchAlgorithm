@@ -14,7 +14,7 @@ public class Search{
 	int num = 75;
 	ResultSet result;
 	Integer length = new Integer(1);
-	int length2 = 0
+	long length2 = 0
 	ResultSet topResult;
 	int count = 0;
 	int len = 25;
@@ -64,7 +64,7 @@ public class Search{
 		int charsInARow = 0;
 		ArrayList<Integer> array3 = new ArrayList<Integer>();
 		int x = 0;
-		for(long i = 0; i < length; i++)
+		for(long i = 0; i < length2; i++)
 		{
 			char[] array2Token = array2.get(i).toCharArray();
 			for(int z = 0; z < array2Token.length; z++)
