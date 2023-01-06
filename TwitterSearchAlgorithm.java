@@ -11,9 +11,9 @@ import java.sql.ResultSet;
 
 public class Search{
 	//Max number of results we would allow.
-	int num = 150;
+	int num = 75;
 	ResultSet result;
-	Integer length = new Integer(11);
+	Integer length = new Integer(1);
 	int length2 = 0
 	ResultSet topResult;
 	int count = 0;
