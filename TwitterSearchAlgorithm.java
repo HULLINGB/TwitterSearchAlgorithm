@@ -57,20 +57,20 @@ public class Search{
 		for(long b = 0; b < length2; b++)
 		{
 			try{
-				names = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNum = " + String.valueOf(b));
-				while(names.next())
-				{
-				array2.add(names.getString(c));
-				c++;
-				}
-				c = 0;
-				while(names.next())
-				{
-				names.absolute(c);
-				names.deleteRow();
-				c++;
-				}
-				c = 0;
+			names = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNum = " + String.valueOf(b));
+			while(names.next())
+			{
+			array2.add(names.getString(c));
+			c++;
+			}
+			c = 0;
+			while(names.next())
+			{
+			names.absolute(c);
+			names.deleteRow();
+			c++;
+			}
+			c = 0;
 			}catch(SQLException e)
 			{
 			}
@@ -135,7 +135,7 @@ public class Search{
 		{	
 			if(array3.get(i) > 0)
 			{
-				topResult = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + map.get(array3.get(i)));
+				topResult = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNum = " + map.get(array3.get(i)));
 				while(topResult.next())
 				{
 					array[m] = topResult.getString(m);
