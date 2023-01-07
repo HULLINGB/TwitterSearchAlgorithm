@@ -12,11 +12,11 @@ import java.sql.ResultSet;
 public class Search{
 	//Max number of results we would allow.
 	int num = 75;
+	ResultSet names;
 	ResultSet result;
 	Integer length = new Integer(1);
 	long length2 = 0
 	ResultSet topResult;
-	int count = 0;
 	int len = 25;
 	String[] array = new String[num];
 	
@@ -53,10 +53,24 @@ public class Search{
 		{
 		}
 		length2 = length;
+		long c = 0;
 		for(long b = 0; b < length2; b++)
 		{
 			try{
-				array2.add(database.executeQuery("SELECT Username FROM Twitter WHERE AccountNum = " + String.valueOf(b)));
+				names = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNum = " + String.valueOf(b));
+				while(names.next())
+				{
+				array2.add(names.getString(c));
+				c++;
+				}
+				c = 0;
+				while(names.next())
+				{
+				names.absolute(c);
+				names.deleteRow();
+				c++;
+				}
+				c = 0;
 			}catch(SQLException e)
 			{
 			}
@@ -99,7 +113,8 @@ public class Search{
 			//millions or billions of account names, we could require 3, 4, or 5 charsInARow
 			//to count the account name in our list of results because repeat values
 			//for charsInARow in our HashMap will automatically default to the last 
-			//assigned input to the hashmap, and will possibly print those values multiple times 
+			//assigned input to the hashmap, and will possibly print the same value
+			//multiple times
 			if(charsInARow > 2)
 			{
 				array3.add(charsInARow);
@@ -123,9 +138,10 @@ public class Search{
 				topResult = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNumber = " + map.get(array3.get(i)));
 				while(topResult.next())
 				{
-					array[count] = topResult.getString(count);
-					count++;
+					array[m] = topResult.getString(m);
+					m++;
 				}
+				m = 0;
 				while(topResult.next())
 				{
 					topResult.absolute(m);
