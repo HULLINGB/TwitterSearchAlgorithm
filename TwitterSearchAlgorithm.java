@@ -77,7 +77,7 @@ public class Search{
 		}
 		int charsInARow = 0;
 		ArrayList<Integer> array3 = new ArrayList<Integer>();
-		int x = 0;
+		long x = 0;
 		for(long i = 0; i < length2; i++)
 		{
 			char[] array2Token = array2.get(i).toCharArray();
