@@ -104,9 +104,9 @@ public class Search{
 			//when we use the values for referencing account number.
 			if(charsInARow > 1)
 			{
-				while(x < array4.size())
+				while(x < array3.size())
 				{
-					if(array4.get(x).equals(charsInARow))
+					if(array3.get(x).equals(charsInARow))
 					{
 						charsInARow++;
 					}
