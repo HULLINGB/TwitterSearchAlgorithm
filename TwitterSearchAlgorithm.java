@@ -102,7 +102,7 @@ public class Search{
 			//Give the entries with the same charsInARow higher values for HashMap key reference
 			//so that we can distinguish between values and we dont get duplicates in our output
 			//when we use the values for referencing account number.
-			if(charsInARow > 0)
+			if(charsInARow > 1)
 			{
 				while(x < array4.size())
 				{
@@ -120,7 +120,7 @@ public class Search{
 			//for charsInARow in our HashMap will automatically default to the last 
 			//assigned input to the hashmap, and will possibly print the same value
 			//multiple times
-			if(charsInARow > 2)
+			if(charsInARow > 1)
 			{
 				array3.add(charsInARow);
 			}else
