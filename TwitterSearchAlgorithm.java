@@ -100,15 +100,20 @@ public class Search{
 				charsInARow = charsInARow + 3;
 			}
 			//Give the entries with the same charsInARow higher values for HashMap key reference
-			while(x < array4.size())
-            {
-                if(array4.get(x).equals(charsInARow))
-                {
-                    charsInARow++;
-                }
-                x++;
-            }
-            x = 0;
+			//so that we can distinguish between values and we dont get duplicates in our output
+			//when we use the values for referencing account number.
+			if(charsInARow > 0)
+			{
+				while(x < array4.size())
+				{
+					if(array4.get(x).equals(charsInARow))
+					{
+						charsInARow++;
+					}
+					x++;
+				}
+				x = 0;	
+			}
 			//1 or 2 charsInARow and above is suitable for a small sample size. If we have
 			//millions or billions of account names, we could require 3, 4, or 5 charsInARow
 			//to count the account name in our list of results because repeat values
