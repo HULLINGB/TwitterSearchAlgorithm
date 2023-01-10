@@ -17,18 +17,16 @@ public class Search{
 	Integer length = new Integer(1);
 	long length2 = 0
 	ResultSet topResult;
-	int len = 25;
 	String[] array = new String[num];
 	
 	public static void main(String[] args)
 	{
+		Search socialSearch = new Search();
 		Scanner myObj = new Scanner(System.in);
 		String input = myObj.nextLine();
-		search(input);
-		for(int a = 0; a < len; a++)
-		{
-			System.out.println(array[a]);
-		}
+		socialSearch.search(input);
+		socialSearch.getResult();
+		
 	}
 
 	public void search(String input)
@@ -157,4 +155,10 @@ public class Search{
 			}
 		}
 	}
+	
+	public String[] getResult()
+	{
+		return array;
+	}
+	
 }
