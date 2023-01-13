@@ -21,11 +21,11 @@ public class Search{
 	
 	public static void main(String[] args)
 	{
-		Search socialSearch = new Search();
+		Search search = new Search();
 		Scanner myObj = new Scanner(System.in);
 		String input = myObj.nextLine();
-		socialSearch.search(input);
-		socialSearch.getResult();
+		search.search(input);
+		System.out.println(Arrays.toString(search.getResults());
 		
 	}
 
@@ -134,6 +134,8 @@ public class Search{
 		}
 		Collections.sort(array3, Collections.reverseOrder()); 
 		int m = 0;
+		int n = 0;
+		String[] array7 = new String[num];
 		for(int i = 0; i < num; i++)
 		{	
 			if(array3.get(i) > 0)
@@ -141,7 +143,8 @@ public class Search{
 				topResult = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNum = " + map.get(array3.get(i)));
 				while(topResult.next())
 				{
-					array[m] = topResult.getString(m);
+					array7[n] = topResult.getString(m);
+					n++;
 					m++;
 				}
 				m = 0;
@@ -154,9 +157,15 @@ public class Search{
 				m = 0;
 			}
 		}
+		setResults(array7);
 	}
 	
-	public String[] getResult()
+	public static void setResults(String[] array7)
+	{
+		array[] = array7;
+	}
+	
+	public static String[] getResults()
 	{
 		return array;
 	}
