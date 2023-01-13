@@ -10,14 +10,9 @@ import java.sql.ResultSet;
 
 
 public class Search{
-	//Max number of results we would allow.
-	int num = 75;
-	ResultSet names;
-	ResultSet result;
-	Integer length = new Integer(1);
-	long length2 = 0
-	ResultSet topResult;
-	String[] array = new String[num];
+
+	public static String[] array = new String[75];
+	
 	
 	public static void main(String[] args)
 	{
@@ -29,7 +24,7 @@ public class Search{
 		
 	}
 
-	public void search(String input)
+	public static void search(String input)
 	{
 		char[] array1 = input.toCharArray();
 		ArrayList<String> array2 = new ArrayList<String>();
@@ -38,10 +33,11 @@ public class Search{
 		Connection connection = DriverManager.getConnection(  
 				"jdbc:mysql://localhost:3306/Twitter","root","root");    
 		Statement database = connection.createStatement();
-		result = database.execute("SELECT COUNT(*) FROM Twitter");
+		ResultSet result = database.execute("SELECT COUNT(*) FROM Twitter");
 		}catch(SQLException e)
 		{
 		}
+		Integer length = 0;
 		try{
 			while(result.next())
 			{
@@ -50,8 +46,9 @@ public class Search{
 		}catch(Exception e)
 		{
 		}
-		length2 = length;
+		Long length2 = new Long(length);
 		long c = 0;
+		ResultSet names;
 		for(long b = 0; b < length2; b++)
 		{
 			try{
@@ -128,7 +125,7 @@ public class Search{
 			charsInARow = 0;
 		}
         HashMap<Integer, String> map = new HashMap<>();
-		for(long b = 0; b < length; b++)
+		for(long b = 0; b < length2; b++)
 		{
 			map.put(array3.get(b), String.valueOf(b));
 		}
@@ -136,6 +133,7 @@ public class Search{
 		int m = 0;
 		int n = 0;
 		String[] array7 = new String[num];
+		ResultSet topResult;
 		for(int i = 0; i < num; i++)
 		{	
 			if(array3.get(i) > 0)
@@ -169,5 +167,5 @@ public class Search{
 	{
 		return array;
 	}
-	
+
 }
