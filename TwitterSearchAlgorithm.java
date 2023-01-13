@@ -45,7 +45,7 @@ public class Search{
 		try{
 			while(result.next())
 			{
-			length = result.getInt(1);
+			length = result.getLong(1);
 			}
 		}catch(Exception e)
 		{
