@@ -130,7 +130,7 @@ public class Search{
 			map.put(array3.get(b), String.valueOf(b));
 		}
 		Collections.sort(array3, Collections.reverseOrder()); 
-		int m = 0;
+		int m = 1;
 		int n = 0;
 		String[] array7 = new String[num];
 		ResultSet topResult;
@@ -145,14 +145,14 @@ public class Search{
 					n++;
 					m++;
 				}
-				m = 0;
+				m = 1;
 				while(topResult.next())
 				{
 					topResult.absolute(m);
 					topResult.deleteRow();
 					m++;
 				}
-				m = 0;
+				m = 1;
 			}
 		}
 		setResults(array7);
