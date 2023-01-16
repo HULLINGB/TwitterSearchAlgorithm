@@ -97,7 +97,7 @@ public class Search{
 			//Give the entries with the same charsInARow higher values for HashMap key reference
 			//so that we can distinguish between values and we dont get duplicates in our output
 			//when we use the values for referencing account number.
-			if(charsInARow > 1)
+			if(charsInARow > 0)
 			{
 				while(x < array3.size())
 				{
@@ -109,19 +109,19 @@ public class Search{
 				}
 				x = 0;	
 			}
-			//1 or 2 charsInARow and above is suitable for a small sample size. If we have
-			//millions or billions of account names, we could require 3, 4, or 5 charsInARow
-			//to count the account name in our list of results because repeat values
-			//for charsInARow in our HashMap will automatically default to the last 
-			//assigned input to the hashmap, and will possibly print the same value
-			//multiple times
-			if(charsInARow > 1)
+			if(array1.length > 1)
 			{
-				array3.add(charsInARow);
-			}else
-            {
-                array3.add(0);
-            }
+			    if(charsInARow > 1)
+			    {
+			    array3.add(charsInARow);
+			    }else{
+			    array3.add(0);
+			    }   
+			}
+			if(array1.length < 2)
+			{
+			    array3.add(charsInARow);
+			}
 			charsInARow = 0;
 		}
         HashMap<Integer, String> map = new HashMap<>();
