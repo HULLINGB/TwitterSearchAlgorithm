@@ -160,7 +160,7 @@ public class Search{
 	
 	public static void setResults(String[] array7)
 	{
-		array[] = array7;
+		array = array7;
 	}
 	
 	public static String[] getResults()
