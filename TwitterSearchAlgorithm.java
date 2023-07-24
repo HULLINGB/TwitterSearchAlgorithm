@@ -33,7 +33,7 @@ public class Search{
 		Connection connection = DriverManager.getConnection(  
 				"jdbc:mysql://localhost:3306/Twitter","root","root");    
 		Statement database = connection.createStatement();
-		ResultSet result = database.execute("SELECT COUNT(*) FROM Twitter");
+		ResultSet result = database.executeQuery("SELECT COUNT(*) FROM Twitter");
 		}catch(SQLException e)
 		{
 		}
