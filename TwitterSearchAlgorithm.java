@@ -136,23 +136,28 @@ public class Search{
 		ResultSet topResult;
 		for(int i = 0; i < num; i++)
 		{	
-			if(array3.get(i) > 0)
+			try{
+				if(array3.get(i) > 0)
+				{
+					topResult = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNum = " + map.get(array3.get(i)));
+					while(topResult.next())
+					{
+						array7[n] = topResult.getString(m);
+						n++;
+						m++;
+					}
+					m = 1;
+					while(topResult.next())
+					{
+						topResult.absolute(m);
+						topResult.deleteRow();
+						m++;
+					}
+					m = 1;
+				}
+			}catch(Exception e)
 			{
-				topResult = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNum = " + map.get(array3.get(i)));
-				while(topResult.next())
-				{
-					array7[n] = topResult.getString(m);
-					n++;
-					m++;
-				}
-				m = 1;
-				while(topResult.next())
-				{
-					topResult.absolute(m);
-					topResult.deleteRow();
-					m++;
-				}
-				m = 1;
+
 			}
 		}
 		setResults(array7);
