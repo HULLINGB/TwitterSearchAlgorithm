@@ -47,15 +47,12 @@ public class TwitterSearchAlgorithmBard{
 		Connection connection = DriverManager.getConnection(  
 				"jdbc:mysql://localhost:3306/Twitter","root","root");    
 		Statement database = connection.createStatement();
-		}catch(SQLException e)
-		{
-		}
+		
 		int m = 1;
 		int n = 0;
 		String[] array7 = new String[num];
 		ResultSet topResult;
 		
-		try{
 		topResult = database.executeQuery("SELECT AccountName FROM Twitter WHERE AccountName LIKE CONCAT('%', " + input + ", '%') ORDER BY COUNT(AccountName) DESC");
 		while(topResult.next())
 		{
@@ -63,12 +60,14 @@ public class TwitterSearchAlgorithmBard{
 		n++;
 		m++;
 		}
-		m = 1;
 		if(array7[0].equals(null))
 		{
 			System.out.println("There are no matches");
 		}
 		setResults(array7);
+		}catch(SQLException e)
+		{
+		}
 	}
 	
 	public static void setResults(String[] array7)
