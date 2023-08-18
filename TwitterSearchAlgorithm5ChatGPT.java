@@ -7,6 +7,23 @@ import java.sql.SQLException;
 
 //ChatGPT wrote the SQL statement and assembled it into a java program upon request when Bard
 //Didn't want to
+
+/**
+ It was created by saying to ChatGPT: 
+ "can you write a character-matching 
+ MySQL database search algorithm where
+ the top matching account names with the 
+ highest amount of matching characters in a
+ row to a user input are filtered to the top
+ out the end output? I want the columns of the
+ database to be AccountNumber, AccountName, DateRegistered,
+ MaleOrFemale. This database would be like that you would find
+ in a social media app"
+
+ "Ok good now plug this into a java program"
+
+ This was the result
+ **/
 public class CharacterMatchingSearch {
     public static void main(String[] args) {
         String jdbcUrl = "jdbc:mysql://localhost:3306/your_database_name";
