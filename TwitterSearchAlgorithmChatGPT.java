@@ -42,7 +42,7 @@ public class CharacterMatchingSearch {
                          + "    WHEN AccountName LIKE CONCAT('%', ?, '%') THEN 3 "
                          + "    ELSE 0 "
                          + "END AS MatchLevel "
-                         + "FROM YourTable "
+                         + "FROM Twitter "
                          + "WHERE AccountName LIKE CONCAT('%', ?, '%') "
                          + "ORDER BY MatchLevel DESC, CHAR_LENGTH(AccountName) "
                          + "LIMIT 10";
