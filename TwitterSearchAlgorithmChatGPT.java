@@ -26,10 +26,9 @@ import java.sql.SQLException;
  **/
 public class CharacterMatchingSearch {
     public static void main(String[] args) {
-        String jdbcUrl = "jdbc:mysql://localhost:3306/your_database_name";
-        String username = "your_username";
-        String password = "your_password";
-
+        String jdbcUrl = "jdbc:mysql://localhost:3306/Twitter";
+        String accountName = "";
+        int matchLevel = 0;
         try {
 
         Scanner myObj = new Scanner(System.in);
@@ -56,13 +55,10 @@ public class CharacterMatchingSearch {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                String accountName = resultSet.getString("AccountName");
-                int matchLevel = resultSet.getInt("MatchLevel");
+                accountName = resultSet.getString("AccountName");
+                matchLevel = resultSet.getInt("MatchLevel");
 
-                System.out.println("AccountNumber: " + accountNumber);
                 System.out.println("AccountName: " + accountName);
-                System.out.println("DateRegistered: " + dateRegistered);
-                System.out.println("MaleOrFemale: " + maleOrFemale);
                 System.out.println("MatchLevel: " + matchLevel);
                 System.out.println("--------------");
             }
