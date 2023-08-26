@@ -60,7 +60,7 @@ public class Search2{
 			try{
 		names = "SELECT Username FROM Twitter WHERE AccountNum = ?";
 		preparedStatement = database.prepareStatement(names);
-		preparedStatement.setInt(1, String.valueOf(b);
+		preparedStatement.setString(1, String.valueOf(b);
 		resultNames = preparedStatement.executeQuery();			
 			while(resultNames.next())
 			{
@@ -149,7 +149,7 @@ public class Search2{
 				{
 				names = "SELECT Username FROM Twitter WHERE AccountNum = ?";
 				preparedStatement2 = connection.prepareStatement(names);
-				preparedStatement2.setInt(1, map.get(array3.get(i)));
+				preparedStatement2.setString(1, map.get(array3.get(i)));
 				topResult = preparedStatement2.executeQuery();
 
 				while(topResult.next())
