@@ -9,9 +9,14 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 
 //The statements are protected from SQL injections in this one.
-//Figued id do that to look like a good consultant.
+//Figued id do that to look like a good consultant
+
 public class Search2{
+
+	//Num of max results
+	int num = 25;
 	public static String[] array = new String[75];
+	String[] array7 = new String[num];
 	Connection connection;
 	Statement database;
 	PreparedStatement preparedStatement;
@@ -54,7 +59,6 @@ public class Search2{
 		}
 		Long length2 = new Long(length);
 		long c = 0;
-		String names = "";
 		for(long b = 0; b < length2; b++)
 		{
 			try{
@@ -141,7 +145,6 @@ public class Search2{
 		Collections.sort(array3, Collections.reverseOrder()); 
 		int m = 1;
 		int n = 0;
-		String[] array7 = new String[num];
 		for(int i = 0; i < num; i++)
 		{	
 			try{
