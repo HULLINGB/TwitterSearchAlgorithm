@@ -20,6 +20,7 @@ public class Search2{
 	ResultSet resultNames;
 	ResultSet resultSet;
 	ResultSet topResult;
+	String names = "";
 	public static void main(String[] args)
 	{
 		Search search = new Search();
