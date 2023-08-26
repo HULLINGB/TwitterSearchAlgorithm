@@ -19,7 +19,7 @@ public class Search2{
 	ResultSet result;
 	ResultSet resultNames;
 	ResultSet resultSet;
-	ResultSet topResult
+	ResultSet topResult;
 	public static void main(String[] args)
 	{
 		Search search = new Search();
@@ -27,7 +27,6 @@ public class Search2{
 		String input = myObj.nextLine();
 		search.search(input);
 		System.out.println(Arrays.toString(search.getResults());
-		
 	}
 
 	public static void search(String input)
