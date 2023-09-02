@@ -86,27 +86,41 @@ public class Search2{
 		int charsInARow = 0;
 		ArrayList<Integer> array3 = new ArrayList<Integer>();
 		long x = 0;
+		int o = 0;
+        int g = 0;
 		for(long i = 0; i < length2; i++)
 		{
 			char[] array2Token = array2.get(i).toCharArray();
-			for(int z = 0; z < array2Token.length; z++)
-			{
-				if(z == array1.length)
-				{
-					break;
-				}
-				
-				if(array1[z] == array2Token[z])
-				{
-					charsInARow = charsInARow + 1;
-				}else{
-					break;
-				}
-			}
-			if(charsInARow == array2token.length)
-			{
-				charsInARow = charsInARow + 3;
-			}
+			//This condition will ensure if the first letters
+            //match it gives a higher ranking
+            if(array1.length == 1 && array1[0] == array2Token[0])
+            {
+                charsInARow = charsInARow + 1000;
+            }
+            for (int i = 0; i < array1.length; i++) {
+                for (int v = i; v < array2Token.length; v++) {
+                    if (array1[i] == array2Token[v]) {
+                        o = v;
+                        for (int z = 0; z < array1.length; z++) {
+                            try{
+                            if (array1[z] == array2Token[o]) {
+                                g++;
+                                charsInARow++;
+                                if(g > 2)
+                                {
+                                    charsInARow = charsInARow + 100;
+                                }
+                            } else {
+                                break;
+                            }
+                            o++;
+                            }catch(Exception e)
+                            {
+                            }
+                        }
+                    }
+                }
+            }
 			//Give the entries with the same charsInARow higher values for HashMap key reference
 			//so that we can distinguish between values and we dont get duplicates in our output
 			//when we use the values for referencing account number.
