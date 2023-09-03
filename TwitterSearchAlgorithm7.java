@@ -8,8 +8,12 @@ import java.sql.Statement;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 
-//The statements are protected from SQL injections in this one.
-//Figued id do that to look like a good consultant
+//I rebuilt the mechanics of substring() from Java String class
+//It contains a condition that says if the search is 1 character long,
+//rank the first letter matching with a much higher value to ensure
+//it gets ranked to the top. All searches match the combination of the 
+//characters in a row from anywhere in the username rather than breaking
+//if the first letter doesnt match.
 
 public class Search2{
 
