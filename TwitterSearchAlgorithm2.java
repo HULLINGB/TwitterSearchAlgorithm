@@ -8,12 +8,24 @@ import java.sql.Statement;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 
+//The statements are protected from SQL injections in this one.
+//Figued id do that to look like a good consultant
 
 public class Search{
 
+	//Num of max results
+	int num = 25;
 	public static String[] array = new String[75];
-	
-	
+	String[] array7 = new String[num];
+	Connection connection;
+	Statement database;
+	PreparedStatement preparedStatement;
+	PreparedStatement preparedStatement2;
+	ResultSet result;
+	ResultSet resultNames;
+	ResultSet resultSet;
+	ResultSet topResult;
+	String names = "";
 	public static void main(String[] args)
 	{
 		Search search = new Search();
@@ -21,7 +33,6 @@ public class Search{
 		String input = myObj.nextLine();
 		search.search(input);
 		System.out.println(Arrays.toString(search.getResults());
-		
 	}
 
 	public static void search(String input)
@@ -30,10 +41,10 @@ public class Search{
 		ArrayList<String> array2 = new ArrayList<String>();
 		try{
 		Class.forName("com.mysql.jdbc.Driver");  
-		Connection connection = DriverManager.getConnection(  
+		connection = DriverManager.getConnection(  
 				"jdbc:mysql://localhost:3306/Twitter","root","root");    
-		Statement database = connection.createStatement();
-		ResultSet result = database.executeQuery("SELECT COUNT(*) FROM Twitter");
+		database = connection.createStatement();
+		result = database.executeQuery("SELECT COUNT(*) FROM Twitter");
 		}catch(SQLException e)
 		{
 		}
@@ -48,21 +59,23 @@ public class Search{
 		}
 		Long length2 = new Long(length);
 		long c = 0;
-		ResultSet names;
 		for(long b = 0; b < length2; b++)
 		{
 			try{
-			names = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNum = " + String.valueOf(b));
-			while(names.next())
+		names = "SELECT Username FROM Twitter WHERE AccountNum = ?";
+		preparedStatement = database.prepareStatement(names);
+		preparedStatement.setString(1, String.valueOf(b);
+		resultNames = preparedStatement.executeQuery();			
+			while(resultNames.next())
 			{
-			array2.add(names.getString(c));
+			array2.add(resultNames.getString(c));
 			c++;
 			}
 			c = 0;
-			while(names.next())
+			while(resultNames.next())
 			{
-			names.absolute(c);
-			names.deleteRow();
+			resultNames.absolute(c);
+			resultNames.deleteRow();
 			c++;
 			}
 			c = 0;
@@ -132,15 +145,17 @@ public class Search{
 		Collections.sort(array3, Collections.reverseOrder()); 
 		int m = 1;
 		int n = 0;
-		String[] array7 = new String[num];
-		ResultSet topResult;
 		for(int i = 0; i < num; i++)
 		{	
 			try{
 				if(array3.get(i) > 0)
 				{
-					topResult = database.executeQuery("SELECT Username FROM Twitter WHERE AccountNum = " + map.get(array3.get(i)));
-					while(topResult.next())
+				names = "SELECT Username FROM Twitter WHERE AccountNum = ?";
+				preparedStatement2 = connection.prepareStatement(names);
+				preparedStatement2.setString(1, map.get(array3.get(i)));
+				topResult = preparedStatement2.executeQuery();
+
+				while(topResult.next())
 					{
 						array7[n] = topResult.getString(m);
 						n++;
