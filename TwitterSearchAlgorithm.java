@@ -134,6 +134,7 @@ public class Search{
 		int n = 0;
 		String[] array7 = new String[num];
 		ResultSet topResult;
+		int num = 75;
 		for(int i = 0; i < num; i++)
 		{	
 			try{

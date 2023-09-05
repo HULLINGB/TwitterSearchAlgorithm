@@ -27,8 +27,8 @@ import java.sql.ResultSet;
  **/
 public class TwitterSearchAlgorithmBard{
 
-	public static String[] array = new String[75];
-	
+	int length = 75;
+	public static String[] array = new String[length];
 	
 	public static void main(String[] args)
 	{
@@ -37,7 +37,6 @@ public class TwitterSearchAlgorithmBard{
 		String input = myObj.nextLine();
 		search.search(input);
 		System.out.println(Arrays.toString(search.getResults());
-		
 	}
 
 	public static void search(String input)
@@ -50,10 +49,11 @@ public class TwitterSearchAlgorithmBard{
 		
 		int m = 1;
 		int n = 0;
+		int num = 75;
 		String[] array7 = new String[num];
 		ResultSet topResult;
 		
-		topResult = database.executeQuery("SELECT AccountName FROM Twitter WHERE AccountName LIKE CONCAT('%', " + input + ", '%') ORDER BY COUNT(AccountName) DESC");
+		topResult = database.executeQuery("SELECT AccountName, COUNT(*) AS NameCount FROM Twitter WHERE AccountName LIKE CONCAT('%', " + input + ", '%') GROUP BY AccountName ORDER BY NameCount DESC");
 		while(topResult.next())
 		{
 		array7[n] = topResult.getString(m);

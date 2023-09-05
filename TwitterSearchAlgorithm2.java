@@ -13,9 +13,8 @@ import java.sql.ResultSet;
 
 public class Search{
 
-	//Num of max results
-	int num = 25;
-	public static String[] array = new String[75];
+	int number = 75;
+	public static String[] array = new String[number];
 	String[] array7 = new String[num];
 	Connection connection;
 	Statement database;
@@ -145,6 +144,8 @@ public class Search{
 		Collections.sort(array3, Collections.reverseOrder()); 
 		int m = 1;
 		int n = 0;
+		//Num of max results
+		int num = 75;
 		for(int i = 0; i < num; i++)
 		{	
 			try{
