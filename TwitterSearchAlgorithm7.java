@@ -8,12 +8,9 @@ import java.sql.Statement;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 
-//I rebuilt the mechanics of substring() from Java String class
-//It contains a condition that says if the search is 1 character long,
-//rank the first letter matching with a much higher value to ensure
-//it gets ranked to the top. All searches match the combination of the 
-//characters in a row from anywhere in the username rather than breaking
-//if the first letter doesnt match.
+//This one contains a method that will continue to
+//search for a matching sequence through the entire String,
+//Instead of breaking if a character doesnt match right away.
 
 public class Search2{
 
@@ -32,7 +29,7 @@ public class Search2{
 	String names = "";
 	public static void main(String[] args)
 	{
-		Search search = new Search();
+		Search2 search = new Search2();
 		Scanner myObj = new Scanner(System.in);
 		String input = myObj.nextLine();
 		search.search(input);
