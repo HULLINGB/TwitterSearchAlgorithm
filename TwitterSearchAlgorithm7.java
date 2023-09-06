@@ -126,9 +126,8 @@ public class Search2{
                     }
                 }
             }
-			//Give the entries with the same charsInARow higher values for HashMap key reference
-			//so that we can distinguish between values and we dont get duplicates in our output
-			//when we use the values for referencing account number.
+			//Add a chewcker so we do not have duplicate values so HashMap get()
+			//statement works properly.
 			if(charsInARow > 0)
 			{
 				while(x < array3.size())
@@ -145,7 +144,8 @@ public class Search2{
             //of "alexandradaddario" appearing above "arianagrande"
             //When i type "ari" for my smaller dataset of 100 celebrity names. 
             //It will slow down the search just a little
-            //So we can comment it out for a larger search if needed.
+            //So we can comment it out for a larger dataset if needed.
+            /**
             if(charsInARow > 0)
             {
               while(x < array3.size())
@@ -158,6 +158,7 @@ public class Search2{
                 }
                 x = 0;
             }
+            **/
 			if(array1.length > 1)
 			{
 			    if(charsInARow > 1)
