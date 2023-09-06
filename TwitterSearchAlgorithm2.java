@@ -57,7 +57,7 @@ public class Search{
 		{
 		}
 		Long length2 = new Long(length);
-		long c = 0;
+		long c = 1;
 		for(long b = 0; b < length2; b++)
 		{
 			try{
@@ -70,14 +70,14 @@ public class Search{
 			array2.add(resultNames.getString(c));
 			c++;
 			}
-			c = 0;
+			c = 1;
 			while(resultNames.next())
 			{
 			resultNames.absolute(c);
 			resultNames.deleteRow();
 			c++;
 			}
-			c = 0;
+			c = 1;
 			}catch(SQLException e)
 			{
 			}
