@@ -57,7 +57,7 @@ public class Search3{
 		{
 		}
 		Long length2 = new Long(length);
-		long c = 0;
+		long c = 1;
 		for(long b = 0; b < length2; b++)
 		{
 			try{

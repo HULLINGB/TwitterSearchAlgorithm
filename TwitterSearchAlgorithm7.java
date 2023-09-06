@@ -202,6 +202,7 @@ public class Search2{
 						topResult.deleteRow();
 						m++;
 					}
+					m = 1;
 				}
 			}catch(Exception e)
 			{
