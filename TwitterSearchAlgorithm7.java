@@ -62,7 +62,7 @@ public class Search2{
 		{
 		}
 		Long length2 = new Long(length);
-		long c = 0;
+		long c = 1;
 		for(long b = 0; b < length2; b++)
 		{
 			try{
@@ -75,14 +75,14 @@ public class Search2{
 			array2.add(resultNames.getString(c));
 			c++;
 			}
-			c = 0;
+			c = 1;
 			while(resultNames.next())
 			{
 			resultNames.absolute(c);
 			resultNames.deleteRow();
 			c++;
 			}
-			c = 0;
+			c = 1;
 			}catch(SQLException e)
 			{
 			}
@@ -97,7 +97,7 @@ public class Search2{
 			char[] array2Token = array2.get(i).toCharArray();
 			//This condition will ensure if the first letters
             //match it gives a higher ranking
-            if(array1.length == 1 && array1[0] == array2[0])
+            if(array1.length == 1 && array1[0] == array2Token[0])
             {
                 charsInARow = charsInARow + 1000;
             }
@@ -205,7 +205,6 @@ public class Search2{
 						topResult.deleteRow();
 						m++;
 					}
-					m = 1;
 				}
 			}catch(Exception e)
 			{
