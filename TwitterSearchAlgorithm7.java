@@ -126,7 +126,7 @@ public class Search2{
                     }
                 }
             }
-			//Add a chewcker so we do not have duplicate values so HashMap get()
+			//Add a checker so we do not have duplicate values so HashMap get()
 			//statement works properly.
 			if(charsInARow > 0)
 			{
