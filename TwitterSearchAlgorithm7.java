@@ -97,7 +97,7 @@ public class Search2{
 			char[] array2Token = array2.get(i).toCharArray();
 			//This condition will ensure if the first letters
             //match it gives a higher ranking
-            if(array1.length == 1 && array1[0] == array2Token[0])
+            if(array1.length == 1 && array1[0] == array2[0])
             {
                 charsInARow = charsInARow + 1000;
             }
@@ -110,11 +110,12 @@ public class Search2{
                             if (array1[z] == array2Token[o]) {
                                 g++;
                                 charsInARow++;
-                                if(g > 2)
+                                if(g >= array1.length)
                                 {
                                     charsInARow = charsInARow + 100;
                                 }
                             } else {
+                                g = 0;
                                 break;
                             }
                             o++;
@@ -140,6 +141,23 @@ public class Search2{
 				}
 				x = 0;	
 			}
+			//Adding an extra checker solved my problem
+            //of "alexandradaddario" appearing above "arianagrande"
+            //When i type "ari" for my smaller dataset of 100 celebrity names. 
+            //It will slow down the search just a little
+            //So we can comment it out for a larger search if needed.
+            if(charsInARow > 0)
+            {
+              while(x < array3.size())
+                {
+                    if(array3.get(x).equals(charsInARow))
+                    {
+                        charsInARow++;
+                    }
+                    x++;
+                }
+                x = 0;
+            }
 			if(array1.length > 1)
 			{
 			    if(charsInARow > 1)
